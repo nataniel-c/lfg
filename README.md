@@ -1,2 +1,2 @@
-# lfg
+# LFG
 looking for gamers
