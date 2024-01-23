@@ -1,5 +1,5 @@
 const typeDefs = `
-  type Tech {
+  type User {
     _id: ID!
     name: String!
   }
@@ -20,6 +20,7 @@ const typeDefs = `
   type Mutation {
     createMatchup(tech1: String!, tech2: String!): Matchup
     createVote(_id: String!, techNum: Int!): Matchup
+    addUser
   }
 `;
 
