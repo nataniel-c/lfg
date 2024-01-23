@@ -4,6 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Header from './components/Header';
 import TeamOrPass from './components/TeamOrPass';
 
+import FriendList from './components/FriendList';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -16,6 +17,7 @@ function App() {
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <TeamOrPass />
+        <FriendList />
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           <Outlet />
         </div>
