@@ -35,7 +35,6 @@ export default function PlayerInfoCard({ user, loggedIn, setLoggedIn }) {
 
     return (
     <div>
-        {Auth.loggedIn() ? (
         <Card sx={{ display: 'flex' }}>
             <CardMedia
                 id='pfp'
@@ -72,8 +71,6 @@ export default function PlayerInfoCard({ user, loggedIn, setLoggedIn }) {
             </CardContent>
             </Box>
         </Card> 
-        ) : (
-        )}
     </div>
     );
 }
