@@ -29,6 +29,13 @@ const router = createBrowserRouter([
       //   path: '/matchup/:id',
       //   element: <Vote />
       // },
+      }, {
+        path: '/matchup',
+        element: <Matchup />
+      }, {
+        path: '/matchup/:id',
+        element: <Vote />
+      },
     ],
   },
 ]);
