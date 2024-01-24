@@ -1,26 +1,61 @@
 const typeDefs = `
   type User {
     _id: ID!
-    name: String!
+    username: String!
+    email: String!
+    gamerTag: String
+    console: String
+    friends: [User]
+    rivals: [User]
+    profilePic: String
+    timePreferences: String
+    gamePreferences: String
+    userbio: String
+    country: String
   }
 
-  type Matchup {
-    _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    users: [User]!
+    user(userId: ID!): User
+    # Make sure this matches the correct component
+    me: User
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
-    addUser
+    addUser(
+        username: String!
+        email: String!
+        password: String!
+      ): Auth
+    updateUser(
+        username: String
+        email: String
+        password: String
+        gamerTag:String
+        console: String
+        friends: [User]
+        rivals: [User]
+        profilePic: String
+        timePreferences: String
+        gamePreferences: String
+        userbio: String
+        country: String
+      ): User
+    login(
+      email: String!
+      password: String!
+      ): Auth
+  }
+    addfriend(userId: ID!
+      ): User
+    removefriend(userId: ID!): User
+    addRival
+    removeRival
   }
 `;
 
