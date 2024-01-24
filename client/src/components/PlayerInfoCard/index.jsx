@@ -4,10 +4,10 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Fab from '@mui/material/Fab';
-import EditIcon from '@mui/icons-material/Edit';
+// import IconButton from '@mui/material/IconButton';
+// import Typography from '@mui/material/Typography';
+// import Fab from '@mui/material/Fab';
+// import EditIcon from '@mui/icons-material/Edit';
 
 
 export default function PlayerInfoCard({ user, loggedIn, setLoggedIn }) {
