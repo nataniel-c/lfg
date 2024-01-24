@@ -1,18 +1,20 @@
-import Button from '@mui/material/Button';
-const TeamOrPass = () => {
-  return (
-    <header className="bg-info mb-2 display-flex align-center">
-      <div className="container flex-row justify-center align-center text-center">
-        <Button size="large" variant="contained" color="success">
-        TeamUp
-        </Button>
-        <Button size="large" variant="contained" color="error">
-        Pass
-        </Button>
-       
-      </div>
-    </header>
-  );
-};
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
-export default TeamOrPass;
+export default function TeamOrPass() {
+  return (
+    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+
+      <Fab variant="extended" color="success">
+        <NavigationIcon sx={{ mr: 1 }} />
+        Team Up!
+      </Fab>
+      <Fab variant="extended" color="error">
+        <NavigationIcon sx={{ mr: 1 }} />
+        Bleh
+      </Fab>
+    </Box>
+  );
+}
