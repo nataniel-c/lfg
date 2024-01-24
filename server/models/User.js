@@ -19,12 +19,9 @@ const userSchema = new Schema({
   },
   gamerTag: {
     type: String,
-    required: true,
-    unique: true,
   },
   console: {
     type: String,
-    required: true,
   },
   friends: [{
     type: Schema.types.ObjectId,
