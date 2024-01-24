@@ -5,7 +5,7 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import TeamUp from './pages/TeamUp.jsx'
 // import Matchup from './pages/Matchup';
-// import Vote from './pages/Vote';
+import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
@@ -22,10 +22,10 @@ const router = createBrowserRouter([
         path: '/teamup',
         element: <TeamUp />
       }, 
-      // {
-      //   path: '/matchup',
-      //   element: <Matchup />
-      // }, {
+      {
+        path: '/me',
+        element: <Profile />
+      }, {
       //   path: '/matchup/:id',
       //   element: <Vote />
       // },
