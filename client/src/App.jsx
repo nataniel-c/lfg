@@ -1,6 +1,7 @@
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import PlayerInfoCard from './components/PlayerInfoCard';
 import Header from './components/Header';
 import TeamOrPass from './components/TeamOrPass';
 
@@ -14,6 +15,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <PlayerInfoCard user={user}/>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <TeamOrPass />
