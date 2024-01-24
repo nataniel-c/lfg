@@ -1,3 +1,4 @@
+// MUI imports
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -17,6 +18,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
+
+//import smaller components from our component directory
+import ProfilePic from './ProfilePic'
+import GameSchedule from './GameSchedule'
 import { useState } from 'react';
 
 // Properties that are defined in the profile: 
@@ -60,22 +65,7 @@ function ProfileForm(props) {
       <Card sx={{ display: 'flex' }}>
         <FormGroup>
           {/* PROFILE PICTURE INPUT */}
-            <Box sx={{ display: 'flex'}}>
-            <CardMedia
-              id='pfp'
-              component="img"
-              sx={{ width: 150, height: 150, objectFit: 'cover'}}
-              image={user.pfp}
-              alt="profile picture"
-            />
-              <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
-                Upload Profile Picture
-                <VisuallyHiddenInput type="file" value={pfp} name='pfp'
-                onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                  setFile(event.target.files[0]);
-                }} />
-              </Button>
-            </Box>
+            <ProfilePic user={user}/>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                     {/* GAMERTAG INPUT */}
@@ -130,31 +120,8 @@ function ProfileForm(props) {
                       label="PC"
                     />
                   </FormGroup>
-                  <FormLabel component="legend">Gaming Schedule:</FormLabel>
-                  <FormLabel id="gaming-day">Day of the Week</FormLabel>
-                    <RadioGroup
-                      aria-labelledby="gaming-day"
-                      name="gamingDay"
-                      value={value}
-                      onChange={handleChange}
-                    >
-                      <FormControlLabel value="monday" control={<Radio />} label="Monday" />
-                      <FormControlLabel value="tuesday" control={<Radio />} label="Tuesday" />
-                      <FormControlLabel value="wednesday" control={<Radio />} label="Wednesday" />
-                      <FormControlLabel value="thursday" control={<Radio />} label="Thursday" />
-                      <FormControlLabel value="monday" control={<Radio />} label="Monday" />
-                      <FormControlLabel value="tuesday" control={<Radio />} label="Tuesday" />
-                    </RadioGroup>
-                    <FormLabel id="demo-controlled-radio-buttons-group">Day of the Week</FormLabel>
-                    <RadioGroup
-                      aria-labelledby="demo-controlled-radio-buttons-group"
-                      name="controlled-radio-buttons-group"
-                      value={value}
-                      onChange={handleChange}
-                    >
-                      <FormControlLabel value="female" control={<Radio />} label="Female" />
-                      <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    </RadioGroup>
+                  {/* GAMING SCHEDULE INPUT */}
+                  <GameSchedule user={user}/>
                     
                 <Typography variant="subtitle1" color="text.secondary" component="div">
                     Active Hours: {user.timePreferences}

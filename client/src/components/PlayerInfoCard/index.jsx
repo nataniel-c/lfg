@@ -13,7 +13,7 @@ import Auth from '../../utils/auth';
 import ProfileForm from '../ProfileForm'
 
 
-export default function PlayerInfoCard({ user, loggedIn, setLoggedIn }) {
+export default function PlayerInfoCard({ props }) {
     const theme = useTheme();
 
     const [edit, setEdit] = useState({
