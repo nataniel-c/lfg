@@ -12,7 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 export default function FriendList() {
-    const [state, setState] = React.useState({left: false});
+    const [state, setState] = React.useState({friends: false});
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -59,7 +59,7 @@ export default function FriendList() {
 
     return (
         <div>
-        {['left'].map((anchor) => (
+        {['friends'].map((anchor) => (
             <React.Fragment key={anchor}>
                 <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
                 <Drawer
