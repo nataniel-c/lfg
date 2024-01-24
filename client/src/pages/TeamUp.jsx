@@ -7,7 +7,7 @@ const TeamUp = () => {
 
 
   return (
-    <div className="bg-white card-rounded w-100">
+    <div className="bg-white card-rounded text-center w-100">
         <TeamOrPass />
 
     </div>
