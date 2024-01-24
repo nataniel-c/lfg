@@ -6,6 +6,7 @@ import ResponsiveAppBar from './components/Header';
 
 import FriendList from './components/FriendList';
 
+// Proxy error shenanigans here
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
