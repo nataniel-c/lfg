@@ -7,6 +7,7 @@ import TeamOrPass from './components/TeamOrPass';
 
 import FriendList from './components/FriendList';
 
+// Proxy error shenanigans here
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
