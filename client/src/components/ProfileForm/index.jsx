@@ -11,20 +11,30 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button'
 import FormGroup from '@mui/material/FormGroup';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 import { useState } from 'react';
 
+// Properties that are defined in the profile: 
+// profile picture, gamertag, bio, preferred console, gaming schedule, country of origin, 
+
 function ProfileForm(props) {
+  const [file, setFile] = useState<File | undefined>();
   const [gamerTag, setGamerTag] = React.useState('');
   const [bio, setBio] = React.useState('');
   const [input, setInput] = useState('');
-  let [eagerness, setEagerness] = useState('');
-
-  const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
+  const [platform, setPlatform] = React.useState({
+    playstation: false,
+    xbox: false,
+    nintendo: false,
+    pc: false
   });
+
+  const [country, setCountry] = React.useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
@@ -37,7 +47,6 @@ function ProfileForm(props) {
     e.preventDefault();
 
     props.onSubmit({
-      id: Math.random(Math.floor() * 1000),
       gamerTag: gamerTag,
 
     });
@@ -50,6 +59,8 @@ function ProfileForm(props) {
     <div>
       <Card sx={{ display: 'flex' }}>
         <FormGroup>
+          {/* PROFILE PICTURE INPUT */}
+            <Box sx={{ display: 'flex'}}>
             <CardMedia
               id='pfp'
               component="img"
@@ -59,35 +70,40 @@ function ProfileForm(props) {
             />
               <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
                 Upload Profile Picture
-                <VisuallyHiddenInput type="file" value={user.pfp} name='pfp'/>
+                <VisuallyHiddenInput type="file" value={pfp} name='pfp'
+                onChange={(event: React.FormEvent<HTMLInputElement>) => {
+                  setFile(event.target.files[0]);
+                }} />
               </Button>
+            </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input id="my-input" aria-describedby="my-helper-text" />
-                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
+                    {/* GAMERTAG INPUT */}
                 <Box>
                   <TextField
                     required
                     id="outlined-required"
                     label="Gamer Tag"
                     value={gamerTag}
-                    defaultValue="example: gamertag123"
+                    placeholder="example: gamertag123"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       setGamerTag(event.target.value);
                     }}
-                  />                  
+                  />
+                    {/* PROFILE BIO INPUT */}
                   <TextField
                     required
                     id="outlined-required"
                     label="Profile Bio"
                     value={bio}
-                    defaultValue="maximum 300 characters"
+                    placeholder="maximum 300 characters"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                       setBio(event.target.value);
                     }}
                   />
-                  <FormLabel component="legend">Preferred Console(s):</FormLabel>
+                  </Box>
+                  {/* PREFERRED GAMING PLATFORM INPUT */}
+                  <FormLabel component="legend">Preferred Platform(s):</FormLabel>
                   <FormGroup>
                     <FormControlLabel
                       control={
@@ -115,33 +131,31 @@ function ProfileForm(props) {
                     />
                   </FormGroup>
                   <FormLabel component="legend">Gaming Schedule:</FormLabel>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox checked={playstation} onChange={handleChange} name="playstation" />
-                      }
-                      label="Playstation"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox checked={xbox} onChange={handleChange} name="xbox" />
-                      }
-                      label="Xbox"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox checked={Nintendo} onChange={handleChange} name="nintendo" />
-                      }
-                      label="Nintendo"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox checked={pc} onChange={handleChange} name="pc" />
-                      }
-                      label="PC"
-                    />
-                    <FormHelperText>Select the times of the week you're most likely to be gaming</FormHelperText>
-                  </FormGroup>
+                  <FormLabel id="gaming-day">Day of the Week</FormLabel>
+                    <RadioGroup
+                      aria-labelledby="gaming-day"
+                      name="gamingDay"
+                      value={value}
+                      onChange={handleChange}
+                    >
+                      <FormControlLabel value="monday" control={<Radio />} label="Monday" />
+                      <FormControlLabel value="tuesday" control={<Radio />} label="Tuesday" />
+                      <FormControlLabel value="wednesday" control={<Radio />} label="Wednesday" />
+                      <FormControlLabel value="thursday" control={<Radio />} label="Thursday" />
+                      <FormControlLabel value="monday" control={<Radio />} label="Monday" />
+                      <FormControlLabel value="tuesday" control={<Radio />} label="Tuesday" />
+                    </RadioGroup>
+                    <FormLabel id="demo-controlled-radio-buttons-group">Day of the Week</FormLabel>
+                    <RadioGroup
+                      aria-labelledby="demo-controlled-radio-buttons-group"
+                      name="controlled-radio-buttons-group"
+                      value={value}
+                      onChange={handleChange}
+                    >
+                      <FormControlLabel value="female" control={<Radio />} label="Female" />
+                      <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    </RadioGroup>
+                    
                 <Typography variant="subtitle1" color="text.secondary" component="div">
                     Active Hours: {user.timePreferences}
                 </Typography>
@@ -179,10 +193,10 @@ function ProfileForm(props) {
     //     <button className="bucket-button">Add bucket list item</button>
     //   </form>
     // </div>
-  ) : (
-    <div>
+  //) : (
+  //  <div>
 
-    </div>
+   // </div>
     // <div>
     //   <h3>Update Profile: {props.edit.value}</h3>
     //   <form className="profile-form" onSubmit={handleSubmit}>
@@ -207,7 +221,7 @@ function ProfileForm(props) {
     //     <button className="bucket-button">Update</button>
     //   </form>
     // </div>
-  );
+  //);
 }
 
 export default ProfileForm;
