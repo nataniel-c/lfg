@@ -14,7 +14,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    minlength: 5,
   },
   gamerTag: {
     type: String,
@@ -25,7 +26,30 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  teamMember: 
+  friends: [{
+    type: Schema.types.ObjectId,
+    ref: 'User'
+  }],
+  rivals: [{
+    type: Schema.types.ObjectId,
+    ref: 'User'
+  }],
+  profilePic: {
+    type: String,
+  },
+  timePreferences: {
+    type: String,
+  },
+  gamePrefences: {
+    type: String,
+  },
+  userbio: {
+    type: String,
+    maxlength: 300,
+  },
+  country: {
+    type: String,
+  }
 });
 
 // set up pre-save middleware to create password
