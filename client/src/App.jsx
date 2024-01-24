@@ -15,7 +15,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <PlayerInfoCard />
+      <PlayerInfoCard user={user}/>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <TeamOrPass />
