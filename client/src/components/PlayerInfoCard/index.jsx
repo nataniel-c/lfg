@@ -13,8 +13,8 @@ import Auth from '../../utils/auth';
 import ProfileForm from '../ProfileForm'
 
 
-export default function PlayerInfoCard({ props }) {
-    const theme = useTheme();
+export default function PlayerInfoCard(props) {
+    
 
     const [edit, setEdit] = useState({
         id: null,

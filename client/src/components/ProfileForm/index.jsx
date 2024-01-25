@@ -1,6 +1,4 @@
 // MUI imports
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,60 +10,94 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button'
 import FormGroup from '@mui/material/FormGroup';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import Alert from '@mui/material/Alert';
 
+import { useTheme } from '@mui/material/styles';
+
+// Database manipulation imports
+import { useMutation } from '@apollo/client';
+import { UPDATE_USER } from '../utils/mutations';
+// import { ADD_USER } from '../utils/mutations';
+
+// React imports
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 //import smaller components from our component directory
 import ProfilePic from './ProfilePic'
 import GameSchedule from './GameSchedule'
-import { useState } from 'react';
+import timeslots from '../../utils/timeslots'
 
 // Properties that are defined in the profile: 
-// profile picture, gamertag, bio, preferred console, gaming schedule, country of origin, 
-
+// profile picture, gamertag, bio, preferred console, gaming schedule, country of origin
 function ProfileForm(props) {
-  const [file, setFile] = useState<File | undefined>();
-  const [gamerTag, setGamerTag] = React.useState('');
-  const [bio, setBio] = React.useState('');
-  const [input, setInput] = useState('');
-  const [platform, setPlatform] = React.useState({
-    playstation: false,
-    xbox: false,
-    nintendo: false,
-    pc: false
+  const [profileState, setProfileState] = React.useState({
+    pfp: 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
+    gamertag: '',
+    bio: '',
+    platform: {
+      playstation: false,
+      xbox: false,
+      nintendo: false,
+      pc: false,
+    },
+    schedule: [],
+    country: ''
   });
 
-  const [country, setCountry] = React.useState('');
+  const [changeUser, { error, data }] = useMutation(UPDATE_USER);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked,
-    });
-  };    
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  const handleSubmit = (e) => {
+    if (name === 'playstation' || 'xbox' || 'nintendo' || 'pc') {
+      setProfileState({
+        ...profileState,
+        platform: {
+          ...profileState.platform,
+          [name]: value
+        }
+      })
+    } else if (
+    name === 'gamertag' && value.length <= 50 || 
+    name === 'bio' && value.length <=300 || 
+    name === 'country') { 
+      setProfileState({
+        ...profileState,
+        [name]: value,
+      });
+    }
+  };
+
+  const handleSave = async (e) => {
     e.preventDefault();
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
 
-    props.onSubmit({
-      gamerTag: gamerTag,
-
-    });
-
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   // First we check to see if "edit" prop exists. If not, we render the normal form
   // If the prop "edit" exists, we know to render the update form instead
-  return !props.edit ? (
+  return data ? (
+    <div>
+      <Alert severity="success">Your profile has been successfully changed. Now get to gaming!</Alert>
+      <Button href="/">Back to the homepage.</Button>
+    </div>
+  ) : (
     <div>
       <Card sx={{ display: 'flex' }}>
         <FormGroup>
           {/* PROFILE PICTURE INPUT */}
-            <ProfilePic user={user}/>
+            <ProfilePic edit={true} profilePic={profileState.pfp} />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                     {/* GAMERTAG INPUT */}
@@ -74,22 +106,18 @@ function ProfileForm(props) {
                     required
                     id="outlined-required"
                     label="Gamer Tag"
-                    value={gamerTag}
-                    placeholder="example: gamertag123"
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                      setGamerTag(event.target.value);
-                    }}
+                    value={profileState.gamertag}
+                    placeholder="maximum 50 characters"
+                    onChange={handleChange}
                   />
                     {/* PROFILE BIO INPUT */}
                   <TextField
                     required
                     id="outlined-required"
                     label="Profile Bio"
-                    value={bio}
+                    value={profileState.bio}
                     placeholder="maximum 300 characters"
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                      setBio(event.target.value);
-                    }}
+                    onChange={handleChange}
                   />
                   </Box>
                   {/* PREFERRED GAMING PLATFORM INPUT */}
@@ -97,32 +125,38 @@ function ProfileForm(props) {
                   <FormGroup>
                     <FormControlLabel
                       control={
-                        <Checkbox checked={playstation} onChange={handleChange} name="playstation" />
-                      }
+                        <Checkbox 
+                          checked={profileState.platform.playstation} 
+                          onChange={handleChange} 
+                          name="playstation" 
+                          />}
                       label="Playstation"
                     />
                     <FormControlLabel
                       control={
-                        <Checkbox checked={xbox} onChange={handleChange} name="xbox" />
-                      }
+                        <Checkbox 
+                          checked={profileState.platform.xbox} 
+                          onChange={handleChange} 
+                          name="xbox" 
+                        />}
                       label="Xbox"
                     />
                     <FormControlLabel
                       control={
-                        <Checkbox checked={Nintendo} onChange={handleChange} name="nintendo" />
-                      }
+                        <Checkbox 
+                          checked={profileState.platform.nintendo} 
+                          onChange={handleChange} 
+                          name="nintendo" 
+                        />}
                       label="Nintendo"
                     />
                     <FormControlLabel
-                      control={
-                        <Checkbox checked={pc} onChange={handleChange} name="pc" />
-                      }
+                      control={<Checkbox checked={pc} onChange={handleChange} name="pc" />}
                       label="PC"
                     />
                   </FormGroup>
                   {/* GAMING SCHEDULE INPUT */}
-                  <GameSchedule user={user}/>
-                    
+                  <GameSchedule />
                 <Typography variant="subtitle1" color="text.secondary" component="div">
                     Active Hours: {user.timePreferences}
                 </Typography>
@@ -137,58 +171,7 @@ function ProfileForm(props) {
           </FormGroup>
         </Card> 
     </div>
-    // <div>
-    //   <form className="bucket-form" onSubmit={handleSubmit}>
-    //     <input
-    //       type="text"
-    //       placeholder="Add to your bucket list"
-    //       value={input}
-    //       name="text"
-    //       className="bucket-input"
-    //       onChange={handleChange}
-    //     ></input>
-    //     <div className="dropdown">
-    //       <button className={`dropbtn ${eagerness}`}>
-    //         {eagerness || 'Priority'}
-    //       </button>
-    //       <div className="dropdown-content">
-    //         <p onClick={() => setEagerness(eagernessLevel[0])}>Must do</p>
-    //         <p onClick={() => setEagerness(eagernessLevel[1])}>Want to do</p>
-    //         <p onClick={() => setEagerness(eagernessLevel[2])}>Take it or leave it</p>
-    //       </div>
-    //     </div>
-    //     <button className="bucket-button">Add bucket list item</button>
-    //   </form>
-    // </div>
-  //) : (
-  //  <div>
-
-   // </div>
-    // <div>
-    //   <h3>Update Profile: {props.edit.value}</h3>
-    //   <form className="profile-form" onSubmit={handleSubmit}>
-    //     <input
-    //       type="text"
-    //       placeholder={props.edit.value}
-    //       value={input}
-    //       name="text"
-    //       className="bucket-input"
-    //       onChange={handleChange}
-    //     ></input>
-    //     <div className="dropdown">
-    //       <button className={`dropbtn ${eagerness}`}>
-    //         {eagerness || 'Priority'}
-    //       </button>
-    //       <div className="dropdown-content">
-    //         <p onClick={() => setEagerness(eagernessLevel[0])}>Must do</p>
-    //         <p onClick={() => setEagerness(eagernessLevel[1])}>Want to do</p>
-    //         <p onClick={() => setEagerness(eagernessLevel[2])}>Take it or leave it</p>
-    //       </div>
-    //     </div>
-    //     <button className="bucket-button">Update</button>
-    //   </form>
-    // </div>
-  //);
-}
+  )
+};
 
 export default ProfileForm;

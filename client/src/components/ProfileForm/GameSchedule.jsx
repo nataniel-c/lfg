@@ -14,17 +14,17 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import WbTwilightIcon from '@mui/icons-material/WbTwilight';
 import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
 
-// Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
-export default function GameSchedule() {
-    const [gameSchedule, setGameSchedule] = React.useState('');
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+}));
 
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    }));
+// Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
+export default function GameSchedule(props) {
+    const [gameSchedule, setGameSchedule] = React.useState('');
 
     // create arrays that will hold info for the times and days
     const times = [
@@ -146,4 +146,4 @@ export default function GameSchedule() {
         </Grid>
         </Box>
     );
-}
+};
