@@ -5,17 +5,41 @@
     "password": "Merica",
     "gamerTag": "BarrackYoMama44",
     "console": "xbox series x",
-    "friends": ["Hubert Nguyen"],
+    "friends": [],
     "gamePreferences": "Call of Duty MW2, Call of Duty: Warzone, Call of Duty BO3",
     "userbio": "You may call me, Mr. President"
   },
   {
-    "username": "Hubert"
+    "username": "HubertN",
+    "email": "Hasmany@mail.com",
+    "password": "password123"
   },
   {
-    "name": "CSS"
+    "username": "john_doe",
+    "email": "john@example.com",
+    "password": "password123",
+    "gamerTag": "JD123",
+    "console": "PlayStation",
+    "friends": [],
+    "rivals": [],
+    "profilePic": "https://example.com/profile-pic.jpg",
+    "timePreferences": "Evenings",
+    "gamePreferences": "Action, RPG",
+    "userbio": "I love playing video games and meeting new people!",
+    "country": "United States"
   },
   {
-    "name": "Handlebars.js"
+    "username": "jane_smith",
+    "email": "jane@example.com",
+    "password": "password456",
+    "gamerTag": "JS456",
+    "console": "Xbox",
+    "friends": [],
+    "rivals": [],
+    "profilePic": "https://example.com/profile-pic.jpg",
+    "timePreferences": "Weekends",
+    "gamePreferences": "Sports, Racing",
+    "userbio": "Gaming is my passion!",
+    "country": "Canada"
   }
 ]
