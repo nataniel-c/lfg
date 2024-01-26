@@ -1,16 +1,16 @@
-// import * as React from 'react';
-// import { useTheme } from '@mui/material/styles';
-// import Box from '@mui/material/Box';
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import IconButton from '@mui/material/IconButton';
-// import Typography from '@mui/material/Typography';
-// import Fab from '@mui/material/Fab';
-// import EditIcon from '@mui/icons-material/Edit';
+import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Fab from '@mui/material/Fab';
+import EditIcon from '@mui/icons-material/Edit';
 import exampleUser from '../../helpers/exampleUser';
-// // import Auth from '../../utils/auth';
-// import ProfileForm from '../ProfileForm'
+import Auth from '../../utils/auth';
+import ProfileForm from '../ProfileForm'
 
 
 export default function PlayerInfoCard({ user }) {
