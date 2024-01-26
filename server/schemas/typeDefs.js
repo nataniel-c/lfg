@@ -22,7 +22,6 @@ const typeDefs = `
   type Query {
     users: [User]!
     user(userId: ID!): User
-    # Make sure this matches the correct component
     me: User
   }
 

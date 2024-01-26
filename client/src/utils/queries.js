@@ -1,22 +1,80 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_TECH = gql`
-  query tech {
-    tech {
+export const QUERY_USERS = gql`
+  query users {
+      users {
+        _id
+        username
+        email
+        gamerTag
+        console
+        friends {
+          _id
+          username
+          email
+        }
+        rivals {
+          _id
+          username
+          email
+        }
+        profilePic
+        timePreferences
+        gamePreferences
+        userbio
+        country
+      }
+    }
+  `;
+  
+  export const QUERY_USER = gql`
+  query user($userId: ID!) {
+    user(userId: $userId) {
       _id
-      name
+      username
+      email
+      gamerTag
+      console
+      friends {
+        _id
+        username
+        email
+      }
+      rivals {
+        _id
+        username
+        email
+      }
+      profilePic
+      timePreferences
+      gamePreferences
+      userbio
+      country
     }
   }
 `;
 
-export const QUERY_MATCHUPS = gql`
-  query matchups($_id: String) {
-    matchups(_id: $_id) {
-      _id
-      tech1
-      tech2
-      tech1_votes
-      tech2_votes
-    }
+export const QUERY_ME = gqp`
+query me {
+  _id
+  username
+  email
+  gamerTag
+  console
+  friends {
+    _id
+    username
+    email
   }
+  rivals {
+    _id
+    username
+    email
+  }
+  profilePic
+  timePreferences
+  gamePreferences
+  userbio
+  country
+}
 `;

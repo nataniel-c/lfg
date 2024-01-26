@@ -21,6 +21,17 @@
     "gamerTag": "Eclipse"
   }, 
   {
+    "username": "Nightfeller",
+    "email": "FearNightfall@hotmail.com",
+    "password": "WendigoInTheDark",
+    "gamerTag": "Slenderboy303",
+    "console": "PC",
+    "friends": [],
+    "rivals": [],
+    "gamePreferences": "Survival, Sandbox, RPG, Looter-Shooter",
+    "country": "United States"
+  },
+  {
     "username": "john_doe",
     "email": "john@example.com",
     "password": "password123",
