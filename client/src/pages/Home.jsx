@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_MATCHUPS } from '../utils/queries';
-import Auth from '../utils/auth';
+import Auth from '../helpers/auth';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_MATCHUPS, {
