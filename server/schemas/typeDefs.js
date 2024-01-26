@@ -38,8 +38,6 @@ const typeDefs = `
         password: String
         gamerTag:String
         console: String
-        friends: [User]
-        rivals: [User]
         profilePic: String
         timePreferences: String
         gamePreferences: String
@@ -50,12 +48,19 @@ const typeDefs = `
       email: String!
       password: String!
       ): Auth
-  }
-    addfriend(userId: ID!
+    addFriend(userId: ID!,
+      friend: ID!
       ): User
-    removefriend(userId: ID!): User
-    addRival
-    removeRival
+    removeFriend(userId: ID!,
+      friend: ID!
+      ): User
+    addRival(userId: ID!,
+      rival: ID!
+      ): User
+    removeRival(userId: ID!,
+      rival: ID!
+      ): User
+      removeUser: User
   }
 `;
 
