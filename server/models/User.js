@@ -24,11 +24,11 @@ const userSchema = new Schema({
     type: String,
   },
   friends: [{
-    type: Schema.types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User'
   }],
   rivals: [{
-    type: Schema.types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User'
   }],
   profilePic: {
@@ -37,7 +37,7 @@ const userSchema = new Schema({
   timePreferences: {
     type: String,
   },
-  gamePrefences: {
+  gamePreferences: {
     type: String,
   },
   userbio: {
