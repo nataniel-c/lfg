@@ -1,9 +1,10 @@
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import PlayerInfoCard from './components/PlayerInfoCard';
+// import PlayerInfoCard from './components/PlayerInfoCard';
 import ResponsiveAppBar from './components/Header';
 import FriendList from './components/FriendList';
+
 
 // Proxy error shenanigans here
 const client = new ApolloClient({
