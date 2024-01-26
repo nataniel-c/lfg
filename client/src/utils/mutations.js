@@ -21,3 +21,8 @@ export const CREATE_VOTE = gql`
     }
   }
 `;
+
+//TO DO:
+export const ADD_USER = []
+
+export const UPDATE_USER = []
