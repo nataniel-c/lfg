@@ -18,7 +18,7 @@ import Alert from '@mui/material/Alert';
 import { useTheme } from '@mui/material/styles';
 
 // Database manipulation imports
-import { useMutation } from '@apollo/client';
+// import { useMutation } from '@apollo/client';
 // import { UPDATE_USER } from '../utils/mutations';
 // import { ADD_USER } from '../utils/mutations';
 
@@ -33,7 +33,7 @@ import timeslots from '../../helpers/timeslots'
 
 // Properties that are defined in the profile: 
 // profile picture, gamertag, bio, preferred console, gaming schedule, country of origin
-function ProfileForm(props) {
+function ProfileForm({ user }) {
   const [profileState, setProfileState] = React.useState({
     pfp: 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
     gamertag: '',
@@ -48,7 +48,7 @@ function ProfileForm(props) {
     country: ''
   });
 
-  const [changeUser, { error, data }] = useMutation(UPDATE_USER);
+  // const [changeUser, { error, data }] = useMutation(UPDATE_USER);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,20 +74,26 @@ function ProfileForm(props) {
 
   const handleSave = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await addUser({
-        variables: { ...formState },
-      });
+    user.profilePic = pfp,
+    user.gamerTag = gamertag;
+    user.console = platform;
+    user.timePreferences = schedule;
+    
+    const done = true;
+    // try {
+    //   const { data } = await addUser({
+    //     variables: { ...formState },
+    //   });
 
-      Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
-    }
+    //   Auth.login(data.addUser.token);
+    // } catch (e) {
+    //   console.error(e);
+    // }
   };
 
   // First we check to see if "edit" prop exists. If not, we render the normal form
   // If the prop "edit" exists, we know to render the update form instead
-  return data ? (
+  return done ? (
     <div>
       <Alert severity="success">Your profile has been successfully changed. Now get to gaming!</Alert>
       <Button href="/">Back to the homepage.</Button>
@@ -151,24 +157,20 @@ function ProfileForm(props) {
                       label="Nintendo"
                     />
                     <FormControlLabel
-                      control={<Checkbox checked={pc} onChange={handleChange} name="pc" />}
+                      control={<Checkbox 
+                        checked={pc} 
+                        onChange={handleChange} 
+                        name="pc" 
+                        />}
                       label="PC"
                     />
                   </FormGroup>
                   {/* GAMING SCHEDULE INPUT */}
                   <GameSchedule />
-                <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Active Hours: {user.timePreferences}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Preferred Platform(s): {user.console}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Country: {user.country}
-                </Typography>
             </CardContent>
             </Box>
           </FormGroup>
+          <Button onClick={handleSave}>Save Profile</Button>
         </Card> 
     </div>
   )
