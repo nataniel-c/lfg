@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Auth from '../../utils/auth';
+import Auth from '../../helpers/auth';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';

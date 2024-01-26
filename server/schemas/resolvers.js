@@ -5,6 +5,17 @@ const resolvers = {
     users: async () => {
       return User.find({});
     },
+    user: async (parent, { userId }) => {
+      try {
+        const user = await User.findById(userId);
+        if (!user) {
+          throw new Error('User not found');
+        }
+        return user;
+      } catch (error) {
+        throw new Error(`Failed to fetch user: ${error.message}`);
+      }
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
@@ -12,7 +23,7 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     }
   },
-  
+
   Mutation: {
     addUser: async (parent, { name, email, password }) => {
       const user = await User.create({ name, email, password });
