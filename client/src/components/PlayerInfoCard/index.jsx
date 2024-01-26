@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import exampleUser from '../../helpers/exampleUser';
-import Auth from '../../utils/auth';
+// import Auth from '../../utils/auth';
 import ProfilePic from '../../components/ProfileForm/ProfilePic'
 import ProfileForm from '../ProfileForm'
 import timeslots from '../../helpers/timeslots';

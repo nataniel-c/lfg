@@ -19,7 +19,7 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export default function ProfilePic(edit, {profilePic}) {
+export default function ProfilePic(edit, profilePic) {
   const [pfp, setPfp] = React.useState('');
 
   const handleChange = (e) => {
