@@ -10,33 +10,27 @@ import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import exampleUser from '../../helpers/exampleUser';
 import Auth from '../../utils/auth';
+import ProfilePic from '../../components/ProfileForm/ProfilePic'
 import ProfileForm from '../ProfileForm'
+import timeslots from '../../helpers/timeslots';
 
 
 export default function PlayerInfoCard({ user }) {
-    
 
-    const [edit, setEdit] = useState({
-        id: null,
-        value: '',
-        eagerness: '',
-    });
-    
-//     console.log(props.profile);
-    
-//     const submitUpdate = (value) => {
-//         props.editBucketItem(edit.id, value);
-//         setEdit({ id: null, value: '', eagerness: '' });
-//     };
-    
-//     if (edit.id) {
-//         return <ProfileForm edit={edit} onSubmit={submitUpdate} />;
-//     }
+    console.log(timeslots)
+    console.log(user.profilePic)
+    const editProfile = () => {
+        return (
+            <div>
+                <ProfileForm edit={false} profilePic={`${user.profilePic}`} />;
+            </div>
+        )
+    }
 
     return (
     <div>
         <Card sx={{ display: 'flex' }}>
-            <ProfilePic user={ user } />
+            <ProfilePic edit={false} profilePic={`${user.profilePic}`}/>
             <Fab color="secondary" aria-label="edit">
                 <EditIcon onClick={editProfile}/>
             </Fab>
@@ -47,14 +41,15 @@ export default function PlayerInfoCard({ user }) {
                 </Typography>
                 <Box>
                     <Typography variant="subtitle1" color="text.secondary" component="div" paragraph='true'>
-                        {user.bio}
+                        {user.userbio}
                     </Typography>
                 </Box>
                 <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Recent Activity: {`${user.recentGame} - ${user.gamingHours} hours played`}
+                    Games I like to play: {user.gamePreferences}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Active Hours: {user.timePreferences}
+                    Active Hours: 24/7
+                    {/* {`${timeslots.where('timeslotId', [user.gamePreferences]).day} ${timeslots.where('timeslotId', [user.gamePreferences]).day}`} */}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary" component="div">
                     Preferred Platform(s): {user.console}

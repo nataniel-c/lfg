@@ -23,7 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 // Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
-export default function GameSchedule(props) {
+export default function GameSchedule({ user }) {
     const [gameSchedule, setGameSchedule] = React.useState('');
 
     // create arrays that will hold info for the times and days
@@ -82,6 +82,7 @@ export default function GameSchedule(props) {
             ...gameSchedule,
             [event.target.name]: event.target.checked,
         });
+        user.timePreferences = gameSchedule;
     };
 
     console.log(timeSlots)

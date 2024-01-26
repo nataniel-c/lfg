@@ -9,7 +9,7 @@ import exampleUser from '../helpers/exampleUser'
 import API from '../helpers/API';
 
 export default function Profile() {
-  const [user, setUser] = useState(exampleUser);
+  const [user, setUser] = useState({exampleUser});
 
   // The useParams hook will yield an object. Its keys match the parameters defined on each route. Its values match the current URL value in those parameter locations
 //   const { id } = useParams();
@@ -26,10 +26,10 @@ export default function Profile() {
 
   return (
     <>
-      <Container>
+      <>
         {/* Conditionally render the full profile or a Loading string, depending on whether user data is available */}
-        {user.username ? <PlayerInfoCard user={user} /> : <p>Loading...</p>}
-      </Container>
+        {exampleUser.username ? <PlayerInfoCard user={exampleUser} /> : <p>Loading...</p>}
+      </>
       <footer className="profile-footer">
         {/* Link the user back to the homepage. The to prop is used in place of an href */}
         <Link to="/">← Go Back</Link>

@@ -42,11 +42,11 @@ let timeslots = [];
 let index = 0;
 times.forEach((time) => {
   days.forEach((day) => {
-      timeslots[index] = {
+      timeslots.push({
           timeslotId: `T${time.id}D${day.id}`,
           time: time.name,
           day: day.name
-      };
+      });
       index = index++;
   });
 })
