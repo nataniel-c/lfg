@@ -10,7 +10,7 @@ import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 
 import Auth from '../../utils/auth';
-import ProfileForm from '../ProfileForm'
+// import ProfileForm from '../ProfileForm'
 
 
 export default function PlayerInfoCard({ user, loggedIn, setLoggedIn }) {
