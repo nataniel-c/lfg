@@ -16,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Friends', 'Squad Up!'];
+const pages = ['Squad Up!'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {

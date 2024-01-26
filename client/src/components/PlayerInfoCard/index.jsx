@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import exampleUser from '../../helpers/exampleUser';
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 import ProfileForm from '../ProfileForm'
 
 
@@ -22,16 +22,16 @@ export default function PlayerInfoCard({ user }) {
         eagerness: '',
     });
     
-    console.log(props.profile);
+//     console.log(props.profile);
     
-    const submitUpdate = (value) => {
-        props.editBucketItem(edit.id, value);
-        setEdit({ id: null, value: '', eagerness: '' });
-    };
+//     const submitUpdate = (value) => {
+//         props.editBucketItem(edit.id, value);
+//         setEdit({ id: null, value: '', eagerness: '' });
+//     };
     
-    if (edit.id) {
-        return <ProfileForm edit={edit} onSubmit={submitUpdate} />;
-    }
+//     if (edit.id) {
+//         return <ProfileForm edit={edit} onSubmit={submitUpdate} />;
+//     }
 
     return (
     <div>

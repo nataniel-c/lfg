@@ -4,9 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './pages/Home';
 import TeamUp from './pages/TeamUp.jsx'
-// import Matchup from './pages/Matchup';
-import Profile from './pages/Profile';
+// // import Matchup from './pages/Matchup';
+// import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+
 
 const router = createBrowserRouter([
   {
@@ -23,13 +25,17 @@ const router = createBrowserRouter([
         element: <TeamUp />
       }, 
       {
-        path: '/me',
-        element: <Profile />
-      }, {
-      //   path: '/matchup/:id',
-      //   element: <Vote />
-      // },
-      }, 
+        path: '/login',
+        element: <Login />
+      },
+      // {
+      //   path: '/me',
+      //   element: <Profile />
+      // }, {
+      // //   path: '/matchup/:id',
+      // //   element: <Vote />
+      // // },
+      // }, 
       // {
       //   path: '/matchup',
       //   element: <Matchup />
