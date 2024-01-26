@@ -1,0 +1,21 @@
+[
+  {
+    "username": "Obamamama",
+    "email": "Obama@Potus.com",
+    "password": "Merica",
+    "gamerTag": "BarrackYoMama44",
+    "console": "xbox series x",
+    "friends": ["Hubert Nguyen"],
+    "gamePreferences": "Call of Duty MW2, Call of Duty: Warzone, Call of Duty BO3",
+    "userbio": "You may call me, Mr. President"
+  },
+  {
+    "username": "Hubert"
+  },
+  {
+    "name": "CSS"
+  },
+  {
+    "name": "Handlebars.js"
+  }
+]
