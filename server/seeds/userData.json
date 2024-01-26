@@ -15,6 +15,12 @@
     "password": "password123"
   },
   {
+    "username": "Ethan",
+    "email": "ethancho@mail.com",
+    "password": "password2",
+    "gamerTag": "Eclipse"
+  }, 
+  {
     "username": "john_doe",
     "email": "john@example.com",
     "password": "password123",
