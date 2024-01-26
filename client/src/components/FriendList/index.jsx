@@ -7,6 +7,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
+//import nothing as React from 'react';
+
 export default function FriendList() {
     const [state, setState] = React.useState({friends: false});
 
