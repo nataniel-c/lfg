@@ -114,7 +114,7 @@ export default function GameSchedule(props) {
                     <Grid key={time.id} container item spacing={1} >
                         {/* Make the label that will go on the leftmost column */}
                         <Grid item xs={1}>
-                            <Item sx={{ backgroundColor: time.color }}>{time.time} {time.icon}</Item>
+                            <Item sx={{ backgroundColor: time.color }}>{time.time} <WbSunnyIcon /></Item>
                         </Grid>
                         {/* Loop over the 7 day columns to make checkboxes for each on the selected time row */}
                         {days.map(day =>

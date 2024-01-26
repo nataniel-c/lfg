@@ -7,21 +7,21 @@ const times = [
       id: 1,
       name: "morning",
       time: "Morning",
-      icon: <WbSunnyIcon />,
+      icon: '<WbSunnyIcon />',
       color: '#e2a816' 
   },
   {
       id: 2,
       name: "afternoon",
       time: "Afternoon",
-      icon:  <WbTwilightIcon />,
+      icon:  '<WbTwilightIcon />',
       color: '#e24216' 
   },
   {
       id: 3,
       name: "evening",
       time: "Evening",
-      icon: <NightlightRoundIcon />,
+      icon: '<NightlightRoundIcon />',
       color: '#654cd9' 
   }
 ];

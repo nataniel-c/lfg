@@ -19,7 +19,7 @@ import { useTheme } from '@mui/material/styles';
 
 // Database manipulation imports
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from '../utils/mutations';
+// import { UPDATE_USER } from '../utils/mutations';
 // import { ADD_USER } from '../utils/mutations';
 
 // React imports
@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
 //import smaller components from our component directory
 import ProfilePic from './ProfilePic'
 import GameSchedule from './GameSchedule'
-import timeslots from '../../utils/timeslots'
+import timeslots from '../../helpers/timeslots'
 
 // Properties that are defined in the profile: 
 // profile picture, gamertag, bio, preferred console, gaming schedule, country of origin

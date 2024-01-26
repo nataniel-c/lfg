@@ -8,12 +8,12 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
-
-import Auth from '../../utils/auth';
+import exampleUser from '../../helpers/exampleUser';
+// import Auth from '../../utils/auth';
 import ProfileForm from '../ProfileForm'
 
 
-export default function PlayerInfoCard(props) {
+export default function PlayerInfoCard({ user }) {
     
 
     const [edit, setEdit] = useState({
@@ -36,13 +36,7 @@ export default function PlayerInfoCard(props) {
     return (
     <div>
         <Card sx={{ display: 'flex' }}>
-            <CardMedia
-                id='pfp'
-                component="img"
-                sx={{ width: 150, height: 150, objectFit: 'cover'}}
-                image={user.pfp}
-                alt="profile picture"
-            />
+            <ProfilePic user={ user } />
             <Fab color="secondary" aria-label="edit">
                 <EditIcon onClick={editProfile}/>
             </Fab>
