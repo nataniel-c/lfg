@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_MATCHUPS } from '../utils/queries';
+import Auth from '../utils/auth';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_MATCHUPS, {
@@ -12,10 +13,10 @@ const Home = () => {
   return (
     <div className="card bg-white card-rounded w-50">
       <div className="card-header bg-dark text-center">
-        <h1>Welcome to Tech Matchup!</h1>
+        <h1>Welcome to Looking for Gamers!</h1>
       </div>
-      <div className="card-body m-5">
-        <h2>Here is a list of matchups you can vote on:</h2>
+      <div className="card-body m-5 text-center">
+        <h2>Sign up or Login to start teaming up!:</h2>
         {loading ? (
           <div>Loading...</div>
         ) : (
@@ -33,10 +34,27 @@ const Home = () => {
         )}
       </div>
       <div className="card-footer text-center m-3">
-        <h2>Ready to create a new matchup?</h2>
-        <Link to="/matchup">
-          <button className="btn btn-lg btn-danger">Create Matchup!</button>
-        </Link>
+        <div>
+          {Auth.loggedIn() ? (
+            <>
+              <Link className="btn btn-lg btn-primary m-2" to="/me">
+                View My Profile
+              </Link>
+              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link className="btn btn-lg btn-primary m-2" to="/login">
+                Login
+              </Link>
+              <Link className="btn btn-lg btn-light m-2" to="/signup">
+                Signup
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
