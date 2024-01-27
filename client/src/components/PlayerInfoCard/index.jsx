@@ -18,11 +18,11 @@ import timeslots from '../../helpers/timeslots';
 export default function PlayerInfoCard({ user }) {
 
     console.log(timeslots)
-    console.log(user.profilePic)
+    console.log(`${user.profilePic}`)
     const editProfile = () => {
         return (
             <div>
-                <ProfileForm edit={false} profilePic={`${user.profilePic}`} />;
+                <ProfileForm edit={false} profilePic={"`${user.profilePic}`"} />;
             </div>
         )
     }
