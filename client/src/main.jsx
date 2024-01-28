@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
+      },
+      {
+        path: '/signup',
+        element: <SignUp />
       },
       {
         path: '/me',

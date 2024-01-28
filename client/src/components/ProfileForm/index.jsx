@@ -62,20 +62,21 @@ function ProfileForm({ edit , user }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name)
-    console.log(value)
+    console.log(e.target.checked)
 
     if (name === 'playstation' || 'xbox' || 'nintendo' || 'pc') {
       setProfileState({
         ...profileState,
         platform: {
           ...profileState.platform,
-          [name]: value
+          [profileState.platform.name]: e.target.checked
         }
       })
-    } else if (
-    name === 'gamertag' && value.length <= 50 || 
-    name === 'bio' && value.length <=300 || 
-    name === 'country') { 
+    } 
+    // ( name === 'gamertag' && value.length <= 50 || 
+    // name === 'bio' && value.length <=300 || 
+    // name === 'country') 
+    { 
       setProfileState({
         ...profileState,
         [name]: value,
@@ -110,13 +111,12 @@ function ProfileForm({ edit , user }) {
   ) : (
     <div>
       <Card sx={{ maxWidth: 1200, display: 'flex', flexDirection: 'column', justifyItems: 'center', alignItems: 'center', padding: 2}}>
-        <FormGroup fullWidth id="profile-form" sx={{ rowGap: 2, alignItems: 'center' }}>
+        <FormGroup id="profile-form" sx={{ rowGap: 2, alignItems: 'center' }}>
           {/* PROFILE PICTURE INPUT */}
             <Box sx={{ display: 'flex'}}>
               <ProfilePic edit={true} user={user} />
               <Box sx={{ width: 400, display: 'flex', flexDirection: 'column' }}>
                 <TextField
-                  fullWidth
                   required
                   id="outlined-required"
                   label="Gamer Tag"
@@ -128,7 +128,6 @@ function ProfileForm({ edit , user }) {
                 />
                   {/* PROFILE BIO INPUT */}
                 <TextField
-                  fullWidth
                   multiline
                   rows={4}
                   required
