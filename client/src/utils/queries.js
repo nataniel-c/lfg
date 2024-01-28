@@ -54,7 +54,7 @@ export const QUERY_USERS = gql`
   }
 `;
 
-export const QUERY_ME = gqp`
+export const QUERY_ME = gql`
 query me {
   _id
   username
