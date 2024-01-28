@@ -13,39 +13,28 @@ import exampleUser from '../../helpers/exampleUser';
 import ProfilePic from '../../components/ProfileForm/ProfilePic'
 import ProfileForm from '../ProfileForm'
 import timeslots from '../../helpers/timeslots';
+import PreferredTimes from './PreferredTimes';
+import { useParams, Link } from 'react-router-dom';
 
 
 export default function PlayerInfoCard({ user }) {
 
-    console.log(timeslots)
-    console.log(`${user.profilePic}`)
-    const editProfile = () => {
-        return (
-            <div>
-                <ProfileForm edit={false} profilePic={"`${user.profilePic}`"} />;
-            </div>
-        )
-    }
-
-    const handleTimeSlots = () => {
-        let playerTimes = timeslots.where('timeslotId', [user.timePreferences])
-        return (
-            playerTimes.map(index) => {
-            `${playerTimes.day} ${playerTimes.time}, `
-        })
-        )
-    }
+    // const editProfile = () => {
+    //     console.log('edit on')
+    //     return (
+    //         <div>
+    //             <ProfileForm edit={true} user={user} />;
+    //         </div>
+    //     )
+    // }
 
     return (
     <div>
-        <Card sx={{ display: 'flex' }}>
-            <ProfilePic edit={false} profilePic={`${user.profilePic}`}/>
-            <Fab color="secondary" aria-label="edit">
-                <EditIcon onClick={editProfile}/>
-            </Fab>
+        <Card sx={{ display: 'flex', padding: '20px' }}>
+            <ProfilePic edit={false} user={user}/>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                <Typography component="div" variant="h5">
+                <Typography component="div" variant="h4">
                     {user.gamerTag}
                 </Typography>
                 <Box>
@@ -57,7 +46,7 @@ export default function PlayerInfoCard({ user }) {
                     Games I like to play: {user.gamePreferences}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Active Hours: {`${timeslots.where('timeslotId', [user.timePreferences]).day} ${timeslots.where('timeslotId', [user.timePreferences]).day}`}
+                    Active Hours: <PreferredTimes user={user} />
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary" component="div">
                     Preferred Platform(s): {user.console}
@@ -67,6 +56,9 @@ export default function PlayerInfoCard({ user }) {
                 </Typography>
             </CardContent>
             </Box>
+            <Fab color="secondary" aria-label="edit">
+                <Link to="/edit-profile"><EditIcon/></Link>
+            </Fab>
         </Card> 
     </div>
     );
