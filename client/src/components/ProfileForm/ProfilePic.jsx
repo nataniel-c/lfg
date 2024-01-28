@@ -19,20 +19,22 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export default function ProfilePic(edit, profilePic) {
-  const [pfp, setPfp] = useState('');
+export default function ProfilePic(edit, {profilePic}) {
+  const [pfp, setPfp] = React.useState('');
 
   const handleChange = (e) => {
     setPfp(e.target.files[0]);
+    profilePic = pfp;
+    edit = false;
   }
 
-  return !edit ? (
+  return edit ? (
     <Box sx={{ display: 'flex'}}>
       <CardMedia
         id='pfp'
         component="img"
         sx={{ width: 150, height: 150, objectFit: 'cover'}}
-        image={profilePic}
+        src={profilePic}
         alt="profile picture"
       />
     </Box>
@@ -42,7 +44,7 @@ export default function ProfilePic(edit, profilePic) {
         id='pfp'
         component="img"
         sx={{ width: 150, height: 150, objectFit: 'cover'}}
-        image={props.pfp}
+        src={profilePic}
         alt="profile picture"
       />
         <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
