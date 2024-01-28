@@ -85,6 +85,16 @@ export default function GameSchedule({ user }) {
         user.timePreferences = gameSchedule;
     };
 
+    const handleIcon = (time) => {
+        if (time.name === 'morning') {
+            return <WbSunnyIcon />
+        } else if (time.name === 'afternoon') {
+            return <WbTwilightIcon />
+        } else if (time.name === 'evening') {
+            return <NightlightRoundIcon />
+        }
+    }
+
     console.log(timeSlots)
 
     // Creates the top row of the timeslot selection grid
@@ -115,7 +125,7 @@ export default function GameSchedule({ user }) {
                     <Grid key={time.id} container item spacing={1} >
                         {/* Make the label that will go on the leftmost column */}
                         <Grid item xs={1}>
-                            <Item sx={{ backgroundColor: time.color }}>{time.time} <WbSunnyIcon /></Item>
+                            <Item sx={{ backgroundColor: time.color }}>{time.time} {handleIcon(time.name)}</Item>
                         </Grid>
                         {/* Loop over the 7 day columns to make checkboxes for each on the selected time row */}
                         {days.map(day =>

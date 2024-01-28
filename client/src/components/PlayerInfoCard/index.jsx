@@ -27,6 +27,15 @@ export default function PlayerInfoCard({ user }) {
         )
     }
 
+    const handleTimeSlots = () => {
+        let playerTimes = timeslots.where('timeslotId', [user.timePreferences])
+        return (
+            playerTimes.map(index) => {
+            `${playerTimes.day} ${playerTimes.time}, `
+        })
+        )
+    }
+
     return (
     <div>
         <Card sx={{ display: 'flex' }}>
@@ -48,8 +57,7 @@ export default function PlayerInfoCard({ user }) {
                     Games I like to play: {user.gamePreferences}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary" component="div">
-                    Active Hours: 24/7
-                    {/* {`${timeslots.where('timeslotId', [user.gamePreferences]).day} ${timeslots.where('timeslotId', [user.gamePreferences]).day}`} */}
+                    Active Hours: {`${timeslots.where('timeslotId', [user.timePreferences]).day} ${timeslots.where('timeslotId', [user.timePreferences]).day}`}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary" component="div">
                     Preferred Platform(s): {user.console}
