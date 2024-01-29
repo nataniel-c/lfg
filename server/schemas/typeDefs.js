@@ -8,7 +8,7 @@ const typeDefs = `
     friends: [User]
     rivals: [User]
     profilePic: String
-    timePreferences: String
+    timePreferences: [String]
     gamePreferences: String
     userbio: String
     country: String

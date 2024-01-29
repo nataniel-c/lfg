@@ -34,9 +34,9 @@ const userSchema = new Schema({
   profilePic: {
     type: String,
   },
-  timePreferences: {
+  timePreferences: [{
     type: String,
-  },
+  }],
   gamePreferences: {
     type: String,
   },
