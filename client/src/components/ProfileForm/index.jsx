@@ -61,22 +61,21 @@ function ProfileForm({ edit , user }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name)
     console.log(e.target.checked)
 
-    if (name === 'playstation' || 'xbox' || 'nintendo' || 'pc') {
+    if (name === 'playstation' || name ===  'xbox' || name ===  'nintendo' || name ===  'pc') {
       setProfileState({
         ...profileState,
         platform: {
           ...profileState.platform,
-          [profileState.platform.name]: e.target.checked
+          [e.target.name]: e.target.checked
         }
       })
     } 
     // ( name === 'gamertag' && value.length <= 50 || 
     // name === 'bio' && value.length <=300 || 
     // name === 'country') 
-    { 
+    else { 
       setProfileState({
         ...profileState,
         [name]: value,
@@ -90,6 +89,7 @@ function ProfileForm({ edit , user }) {
     setProfileState({...profileState});
     setEditState(false);
     edit = editState;
+    user = ({profileState})
     // try {
     //   const { data } = await addUser({
     //     variables: { ...formState },

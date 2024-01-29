@@ -21,13 +21,19 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export default function ProfilePic({ edit, user }) {
-  const [pfp, setPfp] = React.useState('');
+  const [pfp, setPfp] = React.useState(user.profilePic);
   const handleChange = (e) => {
-    setPfp(e.target.files[0]);
+    setPfp(null);
+    const pfpURL = URL.createObjectURL(e.target.files[0])
+    // const newPfp = pfpURL.slice(5);
+    console.log(pfpURL);
+    setPfp(pfpURL);
+    console.log(pfp)
     user.profilePic = pfp;
-    edit = false;
+    console.log(user.profilePic)
   }
 
+  
   return !edit ? (
     <Box sx={{ display: 'flex'}}>
       <Avatar
@@ -42,12 +48,12 @@ export default function ProfilePic({ edit, user }) {
       <Avatar 
         id='pfp'
         sx={{ width: 150, height: 150, objectFit: 'cover'}}
-        src={user.profilePic}
+        src={pfp}
         alt="profile picture"
       />
         <Button size="small" component="label" variant="contained" startIcon={<CloudUploadIcon />} sx={{ alignSelf: "center" , fontSize: '10px', m: 2 }}>
           Upload Profile Picture
-          <VisuallyHiddenInput type="file" value={pfp} name='pfp'
+          <VisuallyHiddenInput type="file" name='pfp'
             onChange={handleChange} />
         </Button>
     </Box>

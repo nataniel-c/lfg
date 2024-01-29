@@ -1,30 +1,42 @@
 import { useState, useEffect } from 'react';
 // Bringing in the required component from 'react-router-dom' for linking between pages and getting the current param variable's value from URL
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import PlayerInfoCard from '../components/PlayerInfoCard';
-// import user from [NEED SEED FILE];
 import FriendList from '../components/FriendList';
 import exampleUser from '../helpers/exampleUser'
 import API from '../helpers/API';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+
+import Auth from '../helpers/auth';
 
 import Button from "@mui/material/Button"
 
 export default function Profile() {
   const [user, setUser] = useState({exampleUser});
+//   const { username: userParam } = useParams();
 
-  // The useParams hook will yield an object. Its keys match the parameters defined on each route. Its values match the current URL value in those parameter locations
-//   const { id } = useParams();
+//   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+//     variables: { username: userParam },
 
-//   const fetchData = async () => {
-//     const { data } = await API.getSingleUser(id);
+//   const user = data?.me || data?.user || {};
+//   // navigate to personal profile page if username is yours
+//   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+//     return <Navigate to="/me" />;
+//   }
 
-//     setUser(data);
-//   };
+//   if (loading) {
+//     return <div>Loading...</div>;
+//   }
 
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
+//   if (!user?.username) {
+//     return (
+//       <h4>
+//         You need to be logged in to see this. Use the navigation links above to
+//         sign up or log in!
+//       </h4>
+//     );
+//   }
 
   return (
     <>
