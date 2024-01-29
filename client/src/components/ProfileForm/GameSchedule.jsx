@@ -93,12 +93,12 @@ export default function GameSchedule({ user }) {
     function TopRow({ days }) {
         return ( 
             <React.Fragment>
-                <Grid fullWidth item xs={4}>
+                <Grid item xs={4}>
                     <Item>Time of Day</Item>
                 </Grid>
                 {days.map((day) => {
                     return (
-                        <Grid fullWidth item key={day.id} xs={2}>
+                        <Grid item key={day.id} xs={2}>
                             <Item>{day.day}</Item>
                         </Grid>
                     )
@@ -114,14 +114,14 @@ export default function GameSchedule({ user }) {
         return (
             <React.Fragment>
                     {times.map(time => 
-                    <Grid fullWidth key={time.id} container item sx={{justifyContent: 'center'}}>
+                    <Grid key={time.id} container item sx={{justifyContent: 'center'}}>
                         {/* Make the label that will go on the leftmost column */}
                         <Grid item xs={2}>
                             <Item sx={{ backgroundColor: time.color, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>{time.time} {time.icon}</Item>
                         </Grid>
                         {/* Loop over the 7 day columns to make checkboxes for each on the selected time row */}
                         {days.map(day =>
-                            <Grid fullWidth key={day.id} item xs={1} sx={{justifyItems: "center"}}>
+                            <Grid key={day.id} item xs={1} sx={{justifyItems: "center"}}>
                                 <Item sx={{ backgroundColor: time.color }}>
                                     <Checkbox
                                         checked={false} 
@@ -141,7 +141,7 @@ export default function GameSchedule({ user }) {
     // Return the nicely packaged component:    
     return (
         <Box sx={{ display: 'flex', justifyItems: 'center'}}>
-            <Grid fullWidth container columns={24} sx={{justifyContent: 'center'}}>
+            <Grid container columns={24} sx={{justifyContent: 'center'}}>
                 {/* Top Row: */}
                 <TopRow days={days} />
                 {/* Other Rows: */}
