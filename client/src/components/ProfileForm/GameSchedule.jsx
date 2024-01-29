@@ -10,6 +10,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
+import timeslots from '../../helpers/timeslots';
 // import icons:
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import WbTwilightIcon from '@mui/icons-material/WbTwilight';
@@ -27,7 +28,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 // Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
 export default function GameSchedule({ user }) {
-    const [gameSchedule, setGameSchedule] = React.useState('');
+    const [gameSchedule, setGameSchedule] = React.useState({});
+    const()
 
     const days = [
         { id: 1, name: "monday", day: "Monday" },
@@ -65,8 +67,6 @@ export default function GameSchedule({ user }) {
         }
     ];
 
-    
-    // create an array that gives each possible time slot a unique number to be used when handling the checkboxes being checked
     // might not need to be used.
     // let timeslots = [];
     // let index = 0;
@@ -83,11 +83,14 @@ export default function GameSchedule({ user }) {
 
     // handlechange returns the name of the checkbox being checked i.e. the "timeslotId"
     const handleChange = (event) => {
+        event.preventDefault();
+        console.log(event.target.name);
+        console.log(event.target.checked);
         setGameSchedule({
             ...gameSchedule,
-            [event.target.name]: event.target.checked,
+            [event.target.name]: event.target.checked
         });
-        user.timePreferences = gameSchedule;
+        console.log(gameSchedule);
     };
 
     function TopRow({ days }) {
@@ -120,17 +123,20 @@ export default function GameSchedule({ user }) {
                             <Item sx={{ backgroundColor: time.color, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>{time.time} {time.icon}</Item>
                         </Grid>
                         {/* Loop over the 7 day columns to make checkboxes for each on the selected time row */}
-                        {days.map(day =>
+                        {days.map((day, index) => {
+                        const timeslotBox = `T${time.id}D${day.id}`;
+                        const checkedBox = gameSchedule.where(timeslotBox, true);
+                        return(
                             <Grid key={day.id} item xs={1} sx={{justifyItems: "center"}}>
                                 <Item sx={{ backgroundColor: time.color }}>
                                     <Checkbox
-                                        checked={false} 
+                                        checked={Object.values(gameSchedule)[index]} 
                                         onChange={handleChange} 
                                         name={`T${time.id}D${day.id}`} 
                                     />
                                 </Item>
                             </Grid>
-                        )} 
+                        )})} 
                     </Grid>
                     )}
                 

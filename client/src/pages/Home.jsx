@@ -17,7 +17,7 @@ const Home = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-primary m-2" to="/me">
+              <Link className="m-2 btn btn-lg btn-primary"  to="/me">
                 View My Profile
               </Link>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
@@ -26,7 +26,7 @@ const Home = () => {
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-primary m-2" to="/login">
+              <Link className="btn btn-lg btn-primary m-3" to="/login">
                 Login
               </Link>
               <Link className="btn btn-lg btn-light m-2" to="/signup">

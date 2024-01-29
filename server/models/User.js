@@ -35,7 +35,7 @@ const userSchema = new Schema({
     type: String,
   },
   timePreferences: {
-    type: String,
+    type: Array,
   },
   gamePreferences: {
     type: String,
