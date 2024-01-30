@@ -3,18 +3,15 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import GroupsIcon from '@mui/icons-material/Groups';
+import { QUERY_USERS } from '../../utils/queries.js';
+import { useQuery } from '@apollo/client';
 
 
-
-export default function FriendList() {
+const FriendList = () => {
     const [state, setState] = React.useState('left');
 
     const toggleDrawer = (anchor, open) => (event) => {
@@ -25,6 +22,9 @@ export default function FriendList() {
         setState({ ...state, [anchor]: open });
     };
 
+    // const data = useQuery(QUERY_USERS);
+    // console.log(data);
+
     const list = (anchor) => (
         <Box
         sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -33,7 +33,7 @@ export default function FriendList() {
         onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Obamamama', 'HubertN', 'john_doe', 'jane_smith'].map((text, index) => (
+                {['Obamamama', 'HubertN', 'john_doe', 'jane_smith'].map((text) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemText primary={text} />
@@ -61,3 +61,5 @@ export default function FriendList() {
         </div>
     );
 }
+
+export default FriendList;
