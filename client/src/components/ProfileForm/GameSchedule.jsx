@@ -28,7 +28,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 // Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
 export default function GameSchedule({ user }) {
-    const [gameSchedule, setGameSchedule] = React.useState([{}]);
+    const [gameSchedule, setGameSchedule] = React.useState({});
+    user.preferredTimes: ['D1T2',]
     
     const days = [
         { id: 1, name: "monday", day: "Monday" },
@@ -85,18 +86,14 @@ export default function GameSchedule({ user }) {
     const handleCheckboxChange = (day, time, checked) => {
         console.log(day, time);
         console.log(gameSchedule);
-        const updatedSchedule = [JSON.parse(JSON.stringify(gameSchedule))];
+        const updatedSchedule = JSON.parse(JSON.stringify(gameSchedule));
         updatedSchedule.map(timeSlot => {
             if (timeSlot.day === day && timeSlot.time === time) {
                 timeSlot.checked = !timeSlot.checked
             }
         })
         gameSchedule.find(timeSlot => timeSlot.day === day && timeSlot.time === time)
-        setGameSchedule([...gameSchedule, {
-            day: day,
-            time: time,
-            checked: !checked
-        }])
+        setGameSchedule(updatedSchedule)
     };
 
     function TopRow({ days }) {

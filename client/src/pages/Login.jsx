@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../helpers/auth.js';
+import Card from '@mui/material/Card';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -42,7 +43,7 @@ const Login = (props) => {
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
-        <div className="card">
+        <Card sx={{ width: 500, display: 'flex', flexDirection: 'column', justifyItems: 'center', alignItems: 'center', padding: 2}}>
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
             {data ? (
@@ -51,6 +52,7 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
+              
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -84,7 +86,7 @@ const Login = (props) => {
               </div>
             )}
           </div>
-        </div>
+        </Card>
       </div>
     </main>
   );
