@@ -17,8 +17,7 @@ import PreferredTimes from './PreferredTimes';
 import { useParams, Link } from 'react-router-dom';
 
 
-export default function PlayerInfoCard({ user }) {
-
+export default function PlayerInfoCard({ user, mine }) {
     // const editProfile = () => {
     //     console.log('edit on')
     //     return (
@@ -27,6 +26,7 @@ export default function PlayerInfoCard({ user }) {
     //         </div>
     //     )
     // }
+    const [myProfile, setMyProfile] = React.useState(mine)
 
     return (
     <div>
@@ -56,9 +56,14 @@ export default function PlayerInfoCard({ user }) {
                 </Typography>
             </CardContent>
             </Box>
-            <Fab color="secondary" aria-label="edit">
+            { myProfile ? (
+                <Fab color="secondary" aria-label="edit">
                 <Link to="/edit-profile"><EditIcon/></Link>
             </Fab>
+            ):
+            (
+                <></>
+            )}
         </Card> 
     </div>
     );

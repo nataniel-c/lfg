@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './pages/Home';
 import TeamUp from './pages/TeamUp.jsx'
-// // import Matchup from './pages/Matchup';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import NotFound from './pages/NotFound';
