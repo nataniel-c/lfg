@@ -18,14 +18,7 @@ import { useParams, Link } from 'react-router-dom';
 
 
 export default function PlayerInfoCard({ user, mine }) {
-    // const editProfile = () => {
-    //     console.log('edit on')
-    //     return (
-    //         <div>
-    //             <ProfileForm edit={true} user={user} />;
-    //         </div>
-    //     )
-    // }
+
     const [myProfile, setMyProfile] = React.useState(mine)
 
     return (

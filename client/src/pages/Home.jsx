@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import Auth from '../helpers/auth';
 import Logout from '../components/Logout';
 import { useQuery } from '@apollo/client';
-import { QUERY_USERS } from '../utils/queries.js';
+import { QUERY_USERS, QUERY_ME } from '../utils/queries.js';
+
 
 const Home = () => {
-  const { loading, data: users } = useQuery(QUERY_USERS);
-  const userData = users ? users : [];
-  console.log(userData)
+  // const { loading, data: users } = useQuery(QUERY_USERS);
+  // const userData = users ? users : [];
   return (
     <div className="card bg-white card-rounded w-50">
       <div className="card-header bg-dark text-center">

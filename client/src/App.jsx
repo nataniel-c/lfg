@@ -6,6 +6,8 @@ import ResponsiveAppBar from './components/Header';
 import FriendList from './components/FriendList';
 import Auth from './helpers/auth';
 import exampleUser from './helpers/exampleUser';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from './utils/queries';
 
 // Proxy error shenanigans here
 const client = new ApolloClient({
@@ -22,10 +24,19 @@ if (Auth.loggedIn()) {
   user = Auth.getUser().data;
 }
 
-console.log(user);
+// let myId = [];
+// let userName = [];
+// if (Auth.loggedIn()) { 
+//   const myId = Auth.getUser().data?._id || [];
+//   const userName = Auth.getUser().data?.username || exampleUser.username;
+// }
 
 function App() {
+
+  // const { loading, data } = useQuery(QUERY_ME,{ variables: { userId: myId } });
+  // const user = data?.me || exampleUser;
   
+  console.log(user);
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
