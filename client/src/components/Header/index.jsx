@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-
-import Auth from '../../helpers/auth';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,7 +14,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import exampleUser from '../../helpers/exampleUser';
+import Auth from '../../helpers/auth';
 
+const userName = Auth.getUser().data.username
 const pages = ['Squad Up!'];
 const settings = [
   {name:'Profile',
@@ -143,6 +143,7 @@ function ResponsiveAppBar() {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src={user.profilePic} />
+                <h1>{userName}</h1>
               </IconButton>
             </Tooltip>
             <Menu
