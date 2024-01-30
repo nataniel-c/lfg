@@ -7,7 +7,7 @@ const exampleUser = {
   friends: [],
   rivals: [],
   profilePic: "https://a.espncdn.com/photo/2018/0917/r432464_1600x800cc.jpg",
-  timePreferences: ['T1D2', 'T2D3', 'T2D5'],
+  timePreferences: ['D1T2', 'D2T3', 'D5T3'],
   gamePreferences: "Action, RPG",
   userbio: "I love playing video games and meeting new people!",
   country: "United States"
