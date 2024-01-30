@@ -40,7 +40,7 @@ let index = 0;
 times.forEach((time) => {
   days.forEach((day) => {
       timeslots.push({
-          timeslotId: `T${time.id}D${day.id}`,
+          timeslotId: `D${day.id}T${time.id}`,
           time: time.name,
           day: day.name
       });
