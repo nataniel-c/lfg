@@ -11,10 +11,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import GroupsIcon from '@mui/icons-material/Groups';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
+import exampleUser from '../../helpers/exampleUser';
 
 
+export default function FriendList({ user }) {
 
-export default function FriendList() {
     const [state, setState] = React.useState('left');
 
     const toggleDrawer = (anchor, open) => (event) => {
@@ -32,8 +35,9 @@ export default function FriendList() {
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
         >
+            {user.friends ? (
             <List>
-                {['Obamamama', 'HubertN', 'john_doe', 'jane_smith'].map((text, index) => (
+                {user.friends.map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemText primary={text} />
@@ -41,6 +45,7 @@ export default function FriendList() {
                     </ListItem>
                 ))}
             </List>
+            ) : (<></>)}
         </Box>
     );
 

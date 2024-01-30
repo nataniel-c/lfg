@@ -16,21 +16,21 @@ import AdbIcon from '@mui/icons-material/Adb';
 import exampleUser from '../../helpers/exampleUser';
 import Auth from '../../helpers/auth';
 
-const userName = Auth.getUser().data.username
+
+
 const pages = ['Squad Up!'];
 const settings = [
-  {name:'Profile',
-  address: '/me',},
-  {name: 'Logout',
-  address: 'logout/'}
-];
+    {name:'Profile',
+    address: '/me',},
+    {name: 'Logout',
+    address: 'logout/'}
+  ];
 
-// make API call to retrieve user data
-const user = exampleUser
-
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ user }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  
+  
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -110,7 +110,7 @@ function ResponsiveAppBar() {
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
-            variant="h5"
+            variant="h2"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
@@ -138,12 +138,12 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
+{Auth.loggedIn() ? (
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={user.profilePic} />
-                <h1>{userName}</h1>
+                <Avatar alt="userpfp" src={user.profilePic} />
+                <h2> {user.username} </h2>
               </IconButton>
             </Tooltip>
             <Menu
@@ -169,6 +169,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
+          ) : (<></>) }
         </Toolbar>
       </Container>
     </AppBar>

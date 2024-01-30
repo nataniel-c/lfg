@@ -12,9 +12,8 @@ import FormLabel from '@mui/material/FormLabel';
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 
-
-
 const SignUp = () => {
+  
   const [formState, setFormState] = useState({
     username: '',
     email: '',
@@ -81,7 +80,7 @@ const SignUp = () => {
           onChange={handleChange}
           margin="normal"
         />
-        <button className="btn btn-lg btn-primary" type="submit">Sign Up</button>
+        <button className="btn btn-lg btn-primary" type="submit" onClick={handleSubmit}>Sign Up</button>
       </FormGroup>
       </Card>
     </div>

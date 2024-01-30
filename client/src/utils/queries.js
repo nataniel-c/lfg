@@ -56,25 +56,27 @@ export const QUERY_USERS = gql`
 
 export const QUERY_ME = gql`
 query me {
-  _id
-  username
-  email
-  gamerTag
-  console
-  friends {
-    _id
-    username
-    email
+    me {
+      _id
+      username
+      email
+      gamerTag
+      console
+      friends {
+        _id
+        username
+        email
+      }
+      rivals {
+        _id
+        username
+        email
+      }
+      profilePic
+      timePreferences
+      gamePreferences
+      userbio
+      country
   }
-  rivals {
-    _id
-    username
-    email
-  }
-  profilePic
-  timePreferences
-  gamePreferences
-  userbio
-  country
 }
 `;

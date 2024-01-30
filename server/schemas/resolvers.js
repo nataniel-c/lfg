@@ -76,8 +76,9 @@ const resolvers = {
       }
     },
     login: async (parent, { email, password }) => {
+      console.log(email, password);
       const user = await User.findOne({ email });
-
+      
       if (!user) {
         throw AuthenticationError;
       }
@@ -89,7 +90,6 @@ const resolvers = {
       }
 
       const token = signToken(user);
-
       return { token, user };
     },
     addFriend: async (parent, { userId, friend }, context) => {

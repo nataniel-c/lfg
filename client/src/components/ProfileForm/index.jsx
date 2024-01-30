@@ -15,13 +15,10 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
-
+import { useMutation } from '@apollo/client';
+import { UPDATE_USER } from '../../utils/mutations';
 import { useTheme } from '@mui/material/styles';
 
-// Database manipulation imports
-// import { useMutation } from '@apollo/client';
-// import { UPDATE_USER } from '../utils/mutations';
-// import { ADD_USER } from '../utils/mutations';
 
 // React imports
 import * as React from 'react';
@@ -35,14 +32,9 @@ import timeslots from '../../helpers/timeslots'
 // Properties that are defined in the profile: 
 // profile picture, gamertag, bio, preferred console, gaming schedule, country of origin
 function ProfileForm({ edit , user }) {
-  if (user.profilePic === '') {
-    var profilePic = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
-  } else {
-    var profilePic = user.profilePic;
-  }
-
+  const [updateUser, { error, data }] = useMutation(UPDATE_USER);
+  
   const [profileState, setProfileState] = React.useState({
-    pfp: profilePic,
     gamertag: '',
     bio: '',
     platform: {
@@ -51,8 +43,7 @@ function ProfileForm({ edit , user }) {
       nintendo: false,
       pc: false,
     },
-    schedule: [],
-    country: ''
+    country: 'United States'
   });
 
   const [editState, setEditState] = React.useState(true)
@@ -61,7 +52,6 @@ function ProfileForm({ edit , user }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.checked)
 
     if (name === 'playstation' || name ===  'xbox' || name ===  'nintendo' || name ===  'pc') {
       setProfileState({
@@ -72,9 +62,7 @@ function ProfileForm({ edit , user }) {
         }
       })
     } 
-    // ( name === 'gamertag' && value.length <= 50 || 
-    // name === 'bio' && value.length <=300 || 
-    // name === 'country') 
+
     else { 
       setProfileState({
         ...profileState,
@@ -87,18 +75,19 @@ function ProfileForm({ edit , user }) {
   const handleSave = async (e, index) => {
     e.preventDefault();
     setProfileState({...profileState});
+    try {
+      const { data } = await updateUser({
+        variables: { ...profileState }
+      });
+    } catch (e) {
+      console.error(e);
+    }
+    user.gamertag = profileState.gamertag;
+    user.bio = profileState.bio;
+    user.platform = profileState.platform;
+    console.log(user);
     setEditState(false);
     edit = editState;
-    user = ({profileState})
-    // try {
-    //   const { data } = await addUser({
-    //     variables: { ...formState },
-    //   });
-
-    //   Auth.login(data.addUser.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
   };
 
   // First we check to see if "edit" prop exists. If not, we render the normal form
