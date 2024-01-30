@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import Auth from '../helpers/auth';
 
 const SignUp = () => {
   const [formState, setFormState] = useState({
+    username: '',
     email: '',
     password: '',
   });
@@ -30,8 +31,8 @@ const SignUp = () => {
       });
 
       Auth.login(data.addUser.token);
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -49,6 +50,13 @@ const SignUp = () => {
         name="password"
         placeholder="Password"
         value={formState.password}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        value={formState.username}
         onChange={handleChange}
       />
       <button type="submit">Sign Up</button>

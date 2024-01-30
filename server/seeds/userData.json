@@ -8,7 +8,7 @@
     "friends": [],
     "profilePic": "https://64.media.tumblr.com/b640b6db98026243ea9ce7ef445e0e38/7d7e22a5820a4057-a4/s250x400/7200fc270183360bf3748f6a5a349e9eac66e982.jpg",
     "gamePreferences": "Call of Duty MW2, Call of Duty: Warzone, Call of Duty BO3",
-    "timePreferences": ["T3D1", "T3D2", "T1D3", "T3D4", "T3D5", "T1D6", "T2D6", "T3D6", "T1D7", "T2D7", "T3D7"],
+    "timePreferences": ["D1T3", "D2T3", "D3T1", "D4T3", "D5T3", "D6T1", "D6T2", "D6T3", "D7T1", "D7T2", "D7T3"],
     "userbio": "Let me be clear: I can absolutely no scope anybody who steps to me. I am consistenly a top fragger with a Crimson rank to my name. Only looking to match with people who can keep up with my excellence."
   },
   {
@@ -20,7 +20,7 @@
     "friends": [],
     "profilePic": "https://media.licdn.com/dms/image/C4E03AQGN5KwoQh_CNg/profile-displayphoto-shrink_800_800/0/1516870034068?e=1712188800&v=beta&t=IhcroaEAtrryQTgPA7s8QL-DyV2L_sELOb7QtxqToP8",
     "gamePreferences": "Street Fighter",
-    "timePreferences": ["T3D6","T1D7"],
+    "timePreferences": ["D6T3","D7T1"],
     "userbio": "Looking for competitive people to play Street Fighter with!"
   },
   {
@@ -32,7 +32,7 @@
     "friends": [],
     "profilePic": "https://files.slack.com/files-pri/T05C3QMP6P6-F06E6G01QR5/image.png",
     "gamePreferences": "Pokemon, Tekken, Stardew Valley, Super Smash Bros. Ultimate",
-    "timePreferences": ["T3D2", "T3D3", "T1D6", "T2D6", "T1D7"], 
+    "timePreferences": ["D2T3", "D3T3", "D6T1", "D6T2", "D7T1"], 
     "userbio": "I'm just here for a good time!",
     "country": "United States"
   }, 
@@ -45,7 +45,7 @@
     "friends": [],
     "profilePic": "https://files.slack.com/files-pri/T05C3QMP6P6-F06EEEM09JA/image.png",
     "rivals": [],
-    "timePreferences": ["T3D1", "T3D2", "T1D3", "T3D4", "T3D5", "T1D6", "T2D6", "T3D6", "T1D7", "T2D7", "T3D7"],
+    "timePreferences": ["D1T3", "D2T3", "D3T1", "D4T3", "D5T3", "D6T1", "D6T2", "D6T3", "D7T1", "D7T2", "D7T3"],
     "gamePreferences": "Minecraft, Destiny",
     "userbio": "I came here to chew bubblegum and kick some butt. And I'm all out of bubblegum...",
     "country": "United States"
@@ -59,7 +59,7 @@
     "console": "PlayStation",
     "friends": [],
     "rivals": [],
-    "timePreferences": ["T3D2", "T3D3", "T3D5", "T2D6"],
+    "timePreferences": ["D2T3", "D3T3", "D5T3", "D6T2"],
     "gamePreferences": "Fortnite, 2K, CoD: MWIII",
     "profilePic": "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
     "userbio": "I love playing video games and meeting new people!",
@@ -74,7 +74,7 @@
     "friends": [],
     "rivals": [],
     "profilePic": "./client/public/images/ncpfp.png",
-    "timePreferences": ["T1D1", "T3D1", "T3D2", "T3D3", "T1D7", "T3D7"],
+    "timePreferences": ["D1T1", "D1T3", "D2T3", "D3T3", "D7T1", "D7T3"],
     "gamePreferences": "Valorant, Super Smash Bros. Ultimate, Lethal Company, Counter Strike",
     "userbio": "Hello there, but I digress. I love gaming!",
     "country": "United States"
@@ -88,7 +88,7 @@
     "friends": [],
     "rivals": [],
     "profilePic": "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
-    "timePreferences": ["T1D6", "T3D5", "T3D6", "T2D6", "T2D7", "T1D7"],
+    "timePreferences": ["D6T1", "D5T3", "D6T3", "D6T2", "D7T2", "D7T1"],
     "gamePreferences": "Among Us, League of Legends, Counter Strike 2",
     "userbio": "Gaming is my passion!",
     "country": "Canada"

@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
   username: {
@@ -34,9 +35,9 @@ const userSchema = new Schema({
   profilePic: {
     type: String,
   },
-  timePreferences: [{
-    type: String,
-  }],
+  timePreferences: {
+    type: Array,
+  },
   gamePreferences: {
     type: String,
   },
