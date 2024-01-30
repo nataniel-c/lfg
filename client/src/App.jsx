@@ -13,18 +13,19 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const user = exampleUser;
-const userName = exampleUser.username
+let user = exampleUser;
+let userName = exampleUser.username;
 
-console.log(Auth.loggedIn())
+console.log(Auth.loggedIn());
 if (Auth.loggedIn()) { 
-  const userName = Auth.getUser().data.username
-  const user = Auth.getUser().data
+  userName = Auth.getUser().data.username;
+  user = Auth.getUser().data;
 }
 
-console.log(user)
+console.log(user);
 
 function App() {
+  
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">

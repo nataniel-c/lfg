@@ -13,6 +13,7 @@ import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 
 const SignUp = () => {
+  
   const [formState, setFormState] = useState({
     username: '',
     email: '',

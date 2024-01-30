@@ -21,12 +21,15 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export default function ProfilePic({ edit, user }) {
-  const [pfp, setPfp] = React.useState(user.profilePic);
+  if (!user.profilePic) {
+    var profilePic = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
+  } else {
+    var profilePic = user.profilePic;
+  }
+  const [pfp, setPfp] = React.useState(profilePic);
   const handleChange = (e) => {
     setPfp(null);
     const pfpURL = URL.createObjectURL(e.target.files[0])
-    // const newPfp = pfpURL.slice(5);
-    console.log(pfpURL);
     setPfp(pfpURL);
     console.log(pfp)
     user.profilePic = pfp;

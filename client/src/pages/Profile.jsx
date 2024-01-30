@@ -12,14 +12,20 @@ import Auth from '../helpers/auth';
 
 import Button from "@mui/material/Button"
 
+let user = exampleUser;
+console.log(Auth.loggedIn());
+  if (Auth.loggedIn()) { 
+    user = Auth.getUser().data;
+  }
+
+
 export default function Profile() {
-  const [user, setUser] = useState({exampleUser});
 
   return (
     <>
       <>
         {/* Conditionally render the full profile or a Loading string, depending on whether user data is available */}
-        {exampleUser.username ? <PlayerInfoCard user={exampleUser} mine={true}/> : <p>Loading...</p>}
+        {user.username ? <PlayerInfoCard user={user} mine={true}/> : <p>Loading...</p>}
       </>
       <footer className="profile-footer">
         {/* Link the user back to the homepage. The to prop is used in place of an href */}

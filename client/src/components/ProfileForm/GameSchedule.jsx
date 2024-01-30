@@ -28,6 +28,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 // Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
 export default function GameSchedule({ user }) {
+    if (!user.timePreferences) {
+        user.timePreferences = [];
+    }
     const checkedBoxes = user.timePreferences.reduce((acc, time) => {
         acc[time] = true;
         return acc;
@@ -72,20 +75,6 @@ export default function GameSchedule({ user }) {
         }
     ];
 
-    // might not need to be used.
-    // let timeslots = [];
-    // let index = 0;
-    // times.forEach((time) => {
-    //     days.forEach((day) => {
-    //         timeslots[index] = {
-    //             timeslotId: `T${time.id}D${day.id}`,
-    //             time: time.name,
-    //             day: day.name
-    //         };
-    //         index = index++;
-    //     });
-    // })
-
     // handlechange returns the name of the checkbox being checked i.e. the "timeslotId"
     const handleCheckboxChange = (day, time, checked) => {
         console.log(2, gameSchedule)
@@ -93,6 +82,14 @@ export default function GameSchedule({ user }) {
         updatedSchedule[`D${day}T${time}`] = !updatedSchedule[`D${day}T${time}`];
         console.log(3, updatedSchedule);
         setGameSchedule(updatedSchedule);
+        const filteredTimeSlots = Object.entries(updatedSchedule)
+        .filter(([key, value]) => value === true)
+        .map(([key, value]) => key);
+      
+        // Assign the filtered timeslots to the user's time preferences
+        user.timePreferences = filteredTimeSlots;
+        
+        console.log(user.timePreferences);
     };
 
     function TopRow({ days }) {

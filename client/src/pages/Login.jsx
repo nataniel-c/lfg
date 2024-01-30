@@ -1,11 +1,16 @@
 import { useState } from 'react';
+import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
+import { QUERY_USERS } from '../utils/queries.js';
 import Auth from '../helpers/auth.js';
 import Card from '@mui/material/Card';
 
 const Login = (props) => {
+  // const { loading, data: users } = useQuery(QUERY_USERS);
+  // const userData = users ? users : [];
+  // console.log(userData)
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN);
 
@@ -22,12 +27,12 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
+      console.log(1);
       const { data } = await login({
         variables: { ...formState },
       });
-
+      console.log(data);
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);

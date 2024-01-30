@@ -16,7 +16,7 @@ const TeamUp = () => {
   console.log(user)
   const { data: users } = useQuery(QUERY_USERS)
   const userData = users || [{}];
-  const randomUser = userData?.[Math.floor(Math.random()*userData.length)] || exampleUser2;
+  const randomUser = userData?.[Math.floor(Math.random()*userData.length)] || exampleUser2[1];
   // const userData = data1?.users || [{}];
   // console.log(userData[Math.floor(Math.random()*userData.length)])
 
@@ -27,10 +27,10 @@ const TeamUp = () => {
   return (
     <div>
       <div>
-        <PlayerInfoCard user={exampleUser2} mine={false} />
+        <PlayerInfoCard user={exampleUser2[1]} mine={false} />
       </div>
       <div className="bg-white card-rounded text-center w-100">
-        <TeamOrPass me={exampleUser} them={exampleUser2}/>
+        <TeamOrPass me={exampleUser} them={exampleUser2[1]}/>
       </div>
     </div>
   );

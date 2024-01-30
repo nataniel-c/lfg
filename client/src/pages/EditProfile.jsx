@@ -7,30 +7,24 @@ import ProfileForm from '../components/ProfileForm';
 import FriendList from '../components/FriendList';
 import exampleUser from '../helpers/exampleUser'
 import API from '../helpers/API';
+import Auth from '../helpers/auth';
 
 import Button from "@mui/material/Button"
 
-export default function EditProfile() {
-  const [user, setUser] = useState({exampleUser});
-  // The useParams hook will yield an object. Its keys match the parameters defined on each route. Its values match the current URL value in those parameter locations
-//   const { id } = useParams();
+let user = exampleUser;
+console.log(Auth.loggedIn());
+  if (Auth.loggedIn()) { 
+    user = Auth.getUser().data;
+  }
 
-//   const fetchData = async () => {
-//     const { data } = await API.getSingleUser(id);
-
-//     setUser(data);
-//   };
-
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-
+export default function EditProfile() { 
+  
   return (
     <>
       <Button href="/">← Go Back</Button>
       <>
         {/* Conditionally render the full profile or a Loading string, depending on whether user data is available */}
-        {exampleUser.username ? <ProfileForm edit={true} user={exampleUser} /> : <p>Loading...</p>}
+        {user.username ? <ProfileForm edit={true} user={user} /> : <p>Loading...</p>}
       </>
       <footer className="profile-footer">
         {/* Link the user back to the homepage. The to prop is used in place of an href */}

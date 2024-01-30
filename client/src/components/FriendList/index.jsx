@@ -35,6 +35,7 @@ export default function FriendList({ user }) {
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
         >
+            {user.friends ? (
             <List>
                 {user.friends.map((text, index) => (
                     <ListItem key={text} disablePadding>
@@ -44,6 +45,7 @@ export default function FriendList({ user }) {
                     </ListItem>
                 ))}
             </List>
+            ) : (<></>)}
         </Box>
     );
 
