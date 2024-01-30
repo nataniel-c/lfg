@@ -28,9 +28,11 @@ const Item = styled(Paper)(({ theme }) => ({
 
 // Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
 export default function GameSchedule({ user }) {
-    const [gameSchedule, setGameSchedule] = React.useState({});
-    user.preferredTimes: ['D1T2',]
-    
+    // for (const preferredTime in user.preferredTimes)
+    // {[user.preferredTimes]: true}
+    const [gameSchedule, setGameSchedule] = React.useState({
+    });
+
     const days = [
         { id: 1, name: "monday", day: "Monday" },
         { id: 2, name: "tuesday", day:"Tuesday" },
