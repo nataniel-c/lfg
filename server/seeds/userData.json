@@ -70,7 +70,7 @@
     "email": "nataniel-c@example.com",
     "password": "password123",
     "gamerTag": "chaloloo",
-    "console": ["PlayStation", "Nintendo", "PC"],
+    "console": "PlayStation",
     "friends": [],
     "rivals": [],
     "profilePic": "./client/public/images/ncpfp.png",
