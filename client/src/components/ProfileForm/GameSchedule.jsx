@@ -9,6 +9,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
 // import icons:
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import WbTwilightIcon from '@mui/icons-material/WbTwilight';
@@ -20,36 +21,13 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    borderStyle: 'solid',
+    borderWidth: '2px'
 }));
 
 // Code to create a section of the profile creation/editing form that allows you to select your preferred gaming hours
 export default function GameSchedule({ user }) {
     const [gameSchedule, setGameSchedule] = React.useState('');
-
-    // create arrays that will hold info for the times and days
-    const times = [
-        {
-            id: 1,
-            name: "morning",
-            time: "Morning",
-            icon: <WbSunnyIcon />,
-            color: '#e2a816' 
-        },
-        {
-            id: 2,
-            name: "afternoon",
-            time: "Afternoon",
-            icon:  <WbTwilightIcon />,
-            color: '#e24216' 
-        },
-        {
-            id: 3,
-            name: "evening",
-            time: "Evening",
-            icon: <NightlightRoundIcon />,
-            color: '#654cd9' 
-        }
-    ];
 
     const days = [
         { id: 1, name: "monday", day: "Monday" },
@@ -61,20 +39,47 @@ export default function GameSchedule({ user }) {
         { id: 7, name: "sunday", day: "Sunday"}
     ]
 
+    // create arrays that will hold info for the times and days
+    const times = [
+        {
+            id: 1,
+            name: "morning",
+            time: "Morning",
+            icon: <WbSunnyIcon />,
+            color: '#e2a816' 
+
+        },
+        {
+            id: 2,
+            name: "afternoon",
+            time: "Afternoon",
+            icon: <WbTwilightIcon />,
+            color: '#e24216' 
+        },
+        {
+            id: 3,
+            name: "evening",
+            time: "Evening",
+            icon: <NightlightRoundIcon />,
+            color: '#654cd9' 
+        }
+    ];
+
+    
     // create an array that gives each possible time slot a unique number to be used when handling the checkboxes being checked
     // might not need to be used.
-    let timeslots = [];
-    let index = 0;
-    times.forEach((time) => {
-        days.forEach((day) => {
-            timeslots[index] = {
-                timeslotId: `T${time.id}D${day.id}`,
-                time: time.name,
-                day: day.name
-            };
-            index = index++;
-        });
-    })
+    // let timeslots = [];
+    // let index = 0;
+    // times.forEach((time) => {
+    //     days.forEach((day) => {
+    //         timeslots[index] = {
+    //             timeslotId: `T${time.id}D${day.id}`,
+    //             time: time.name,
+    //             day: day.name
+    //         };
+    //         index = index++;
+    //     });
+    // })
 
     // handlechange returns the name of the checkbox being checked i.e. the "timeslotId"
     const handleChange = (event) => {
@@ -85,23 +90,21 @@ export default function GameSchedule({ user }) {
         user.timePreferences = gameSchedule;
     };
 
-    console.log(timeSlots)
-
-    // Creates the top row of the timeslot selection grid
-    // loops over the days to display their names across the top row
-    function TopRow(days) {
-        return (
+    function TopRow({ days }) {
+        return ( 
             <React.Fragment>
-                <Grid item xs={1}>
+                <Grid item xs={4}>
                     <Item>Time of Day</Item>
                 </Grid>
-                {days.map(day =>
-                    <Grid key={day.id} item xs={1}>
-                        <Item>{day.day}</Item>
-                    </Grid>
-                )}
+                {days.map((day) => {
+                    return (
+                        <Grid item key={day.id} xs={2}>
+                            <Item>{day.day}</Item>
+                        </Grid>
+                    )
+                })}
             </React.Fragment>
-        );
+        )
     }
 
     // Creates the three other rows of the timeslot selection grid
@@ -110,16 +113,15 @@ export default function GameSchedule({ user }) {
     function FormRows({ times, days }) {
         return (
             <React.Fragment>
-                <FormControl>
                     {times.map(time => 
-                    <Grid key={time.id} container item spacing={1} >
+                    <Grid key={time.id} container item sx={{justifyContent: 'center'}}>
                         {/* Make the label that will go on the leftmost column */}
-                        <Grid item xs={1}>
-                            <Item sx={{ backgroundColor: time.color }}>{time.time} <WbSunnyIcon /></Item>
+                        <Grid item xs={2}>
+                            <Item sx={{ backgroundColor: time.color, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>{time.time} {time.icon}</Item>
                         </Grid>
                         {/* Loop over the 7 day columns to make checkboxes for each on the selected time row */}
                         {days.map(day =>
-                            <Grid key={day.id} item xs={1}>
+                            <Grid key={day.id} item xs={1} sx={{justifyItems: "center"}}>
                                 <Item sx={{ backgroundColor: time.color }}>
                                     <Checkbox
                                         checked={false} 
@@ -131,20 +133,20 @@ export default function GameSchedule({ user }) {
                         )} 
                     </Grid>
                     )}
-                </FormControl>
+                
             </React.Fragment>
         );
     }
 
     // Return the nicely packaged component:    
     return (
-        <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1} columns={8}>
-            <Grid container item spacing={1} color="primary">
-                <TopRow times={times}/>
-            </Grid>
+        <Box sx={{ display: 'flex', justifyItems: 'center'}}>
+            <Grid container columns={24} sx={{justifyContent: 'center'}}>
+                {/* Top Row: */}
+                <TopRow days={days} />
+                {/* Other Rows: */}
                 <FormRows times={times} days={days}/>
-        </Grid>
+            </Grid>
         </Box>
     );
 };

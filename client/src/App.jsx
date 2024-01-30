@@ -18,10 +18,14 @@ function App() {
       {/* <PlayerInfoCard user={user}/> */}
       <div className="flex-column justify-flex-start min-100-vh">
         <ResponsiveAppBar />
-        <FriendList />
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
+      <div className="flex-row align-center justify-center">
+        <div className="flex-column"> 
+          <FriendList />
+        </div>
+        <div className="flex-column col-auto pt-5 align-center min-100-vh bg-primary">
           <Outlet />
         </div>
+      </div>
       </div>
     </ApolloProvider>
   );

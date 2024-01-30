@@ -3,14 +3,19 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import GroupsIcon from '@mui/icons-material/Groups';
 
-//import ` as React from 'react';
+
 
 export default function FriendList() {
-    const [state, setState] = React.useState({friends: false});
+    const [state, setState] = React.useState('left');
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -28,7 +33,7 @@ export default function FriendList() {
         onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['BarrackYoMama44', 'hubeyman', 'Ephexs','JD123', 'JS456'].map((text, index) => (
+                {['Obamamama', 'HubertN', 'john_doe', 'jane_smith'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemText primary={text} />
@@ -41,9 +46,9 @@ export default function FriendList() {
 
     return (
         <div>
-        {['friends'].map((anchor) => (
+        {['left'].map((anchor) => (
             <React.Fragment key={anchor}>
-                <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                <Button size="large" onClick={toggleDrawer(anchor, true)} sx={{display: 'flex', flexDirection: 'column'}}><GroupsIcon />Friends</Button>
                 <Drawer
                     anchor={anchor}
                     open={state[anchor]}

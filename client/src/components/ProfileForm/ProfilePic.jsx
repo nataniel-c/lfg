@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
+import Avatar from "@mui/material/Avatar"
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -19,37 +20,40 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export default function ProfilePic(edit, {profilePic}) {
-  const [pfp, setPfp] = React.useState('');
-
+export default function ProfilePic({ edit, user }) {
+  const [pfp, setPfp] = React.useState(user.profilePic);
   const handleChange = (e) => {
-    setPfp(e.target.files[0]);
-    profilePic = pfp;
-    edit = false;
+    setPfp(null);
+    const pfpURL = URL.createObjectURL(e.target.files[0])
+    // const newPfp = pfpURL.slice(5);
+    console.log(pfpURL);
+    setPfp(pfpURL);
+    console.log(pfp)
+    user.profilePic = pfp;
+    console.log(user.profilePic)
   }
 
-  return edit ? (
+  
+  return !edit ? (
     <Box sx={{ display: 'flex'}}>
-      <CardMedia
+      <Avatar
         id='pfp'
-        component="img"
         sx={{ width: 150, height: 150, objectFit: 'cover'}}
-        src={profilePic}
+        src={user.profilePic}
         alt="profile picture"
       />
     </Box>
   ) : (
-    <Box sx={{ display: 'flex'}}>
-      <CardMedia
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <Avatar 
         id='pfp'
-        component="img"
         sx={{ width: 150, height: 150, objectFit: 'cover'}}
-        src={profilePic}
+        src={pfp}
         alt="profile picture"
       />
-        <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+        <Button size="small" component="label" variant="contained" startIcon={<CloudUploadIcon />} sx={{ alignSelf: "center" , fontSize: '10px', m: 2 }}>
           Upload Profile Picture
-          <VisuallyHiddenInput type="file" value={pfp} name='pfp'
+          <VisuallyHiddenInput type="file" name='pfp'
             onChange={handleChange} />
         </Button>
     </Box>

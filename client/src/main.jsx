@@ -5,9 +5,11 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import TeamUp from './pages/TeamUp.jsx'
 // // import Matchup from './pages/Matchup';
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 
 const router = createBrowserRouter([
@@ -28,10 +30,18 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login />
       },
-      // {
-      //   path: '/me',
-      //   element: <Profile />
-      // }, {
+      {
+        path: '/signup',
+        element: <SignUp />
+      },
+      {
+        path: '/me',
+        element: <Profile />
+      }, 
+      {
+        path: '/edit-profile',
+        element: <EditProfile />
+      }
       // //   path: '/matchup/:id',
       // //   element: <Vote />
       // // },
