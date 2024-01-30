@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Auth from '../helpers/auth';
+import Logout from '../components/Logout';
 
 const Home = () => {
   
@@ -9,23 +10,21 @@ const Home = () => {
       <div className="card-header bg-dark text-center">
         <h1>Welcome to Looking for Gamers!</h1>
       </div>
-      <div className="card-body m-5 text-center">
-        <h2>Sign up or Login to start teaming up!:</h2>
-        
-      </div>
       <div className="card-footer text-center m-3">
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="m-2 btn btn-lg btn-primary"  to="/me">
+              <Link className="m-2 btn btn-lg btn-primary" to="/me">
                 View My Profile
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
+              <Logout />
             </>
           ) : (
             <>
+            <div className="card-body m-5 text-center">
+              <h2>Sign up or Login to start teaming up!:</h2>
+              
+            </div>
               <Link className="btn btn-lg btn-primary m-3" to="/login">
                 Login
               </Link>
