@@ -8,7 +8,8 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "render-build": "npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "@mui/styled-engine": "^5.15.6",
     "@mui/x-data-grid": "^6.19.1",
     "axios": "^1.6.7",
-    "jwt-decode": "^4.0.0"
+    "jwt-decode": "^4.0.0",
+    "mongodb": "^6.3.0"
   }
 }
