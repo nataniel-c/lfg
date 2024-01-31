@@ -5,17 +5,13 @@ import { useQuery } from '@apollo/client';
 import ProfileForm from '../components/ProfileForm';
 // import user from [NEED SEED FILE];
 import FriendList from '../components/FriendList';
-import exampleUser from '../helpers/exampleUser'
+import exampleUser2 from '../helpers/exampleUser2'
 import API from '../helpers/API';
 import Auth from '../helpers/auth';
 
 import Button from "@mui/material/Button"
 
-let user = exampleUser;
-console.log(Auth.loggedIn());
-  if (Auth.loggedIn()) { 
-    user = Auth.getUser().data;
-  }
+let user = exampleUser2[0]
 
 export default function EditProfile() { 
   

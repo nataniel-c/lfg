@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import exampleUser from '../../helpers/exampleUser';
+import exampleUser2 from '../../helpers/exampleUser2';
 // import Auth from '../../utils/auth';
 import ProfilePic from '../../components/ProfileForm/ProfilePic'
 import ProfileForm from '../ProfileForm'
@@ -18,14 +19,7 @@ import { useParams, Link } from 'react-router-dom';
 
 
 export default function PlayerInfoCard({ user, mine }) {
-    // const editProfile = () => {
-    //     console.log('edit on')
-    //     return (
-    //         <div>
-    //             <ProfileForm edit={true} user={user} />;
-    //         </div>
-    //     )
-    // }
+
     const [myProfile, setMyProfile] = React.useState(mine)
 
     return (

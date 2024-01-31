@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import exampleUser from '../../helpers/exampleUser';
 import Auth from '../../helpers/auth';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 
 
@@ -50,26 +51,27 @@ function ResponsiveAppBar({ user }) {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{backgroundColor: "#28a818"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
-            variant="h4"
+            variant="h2"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 5,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              alignItems: 'center'
             }}
-          >
-            LFG
+          ><SportsEsportsIcon fontSize="large" />
+             LFG
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -130,9 +132,12 @@ function ResponsiveAppBar({ user }) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
+                variant="contained"
+                color="secondary"
+                size="large"
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 3, color: 'white', display: 'block'}}
               >
                 {page}
               </Button>

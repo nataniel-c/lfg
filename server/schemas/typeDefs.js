@@ -4,14 +4,14 @@ const typeDefs = `
     username: String!
     email: String!
     password: String!
-    gamerTag: String
+    gamertag: String
     console: String
     friends: [User]
     rivals: [User]
     profilePic: String
     timePreferences: [String]
     gamePreferences: String
-    userbio: String
+    bio: String
     country: String
   }
 
@@ -36,12 +36,12 @@ const typeDefs = `
         username: String
         email: String
         password: String
-        gamerTag:String
+        gamertag:String
         console: String
         profilePic: String
         timePreferences: String
         gamePreferences: String
-        userbio: String
+        bio: String
         country: String
       ): User
     login(
