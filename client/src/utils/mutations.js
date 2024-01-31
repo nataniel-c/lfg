@@ -18,35 +18,35 @@ export const UPDATE_USER = gql`
     $username: String
     $email: String
     $password: String
-    $gamerTag: String
+    $gamertag: String
     $console: String
     $profilePic: String
     $timePreferences: String
     $gamePreferences: String
-    $userbio: String
+    $bio: String
     $country: String
   ) {
     updateUser(
       username: $username
       email: $email
       password: $password
-      gamerTag: $gamerTag
+      gamertag: $gamertag
       console: $console
       profilePic: $profilePic
       timePreferences: $timePreferences
       gamePreferences: $gamePreferences
-      userbio: $userbio
+      bio: $bio
       country: $country
     ) {
       _id
       username
       email
-      gamerTag
+      gamertag
       console
       profilePic
       timePreferences
       gamePreferences
-      userbio
+      bio
       country
     }
   }

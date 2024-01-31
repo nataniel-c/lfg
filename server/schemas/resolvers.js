@@ -35,15 +35,12 @@ const resolvers = {
     updateUser: async (parent, args, context) => {
       // create possible inputs
       const {
-        username,
-        email,
-        password,
-        gamerTag,
+        gamertag,
         console,
         profilePic,
         timePreferences,
         gamePreferences,
-        userbio,
+        bio,
         country,
       } = args;
 
@@ -52,25 +49,29 @@ const resolvers = {
       }
 
       try {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { gamertag, console, profilePic, timePreferences, gamePreferences, bio, country}
+        )
         // Find the user
-        const user = await User.findById(context.user._id);
+        // const user = await User.findById(context.user._id);
 
-        // Update the field with the new information if there is any
-        if (username) user.username = username;
-        if (email) user.email = email;
-        if (password) user.password = password;
-        if (gamerTag) user.gamerTag = gamerTag;
-        if (console) user.console = console;
-        if (profilePic) user.profilePic = profilePic;
-        if (timePreferences) user.timePreferences = timePreferences;
-        if (gamePreferences) user.gamePreferences = gamePreferences;
-        if (userbio) user.userbio = userbio;
-        if (country) user.country = country;
+        // // Update the field with the new information if there is any
+        // if (username) user.username = username;
+        // if (email) user.email = email;
+        // if (password) user.password = password;
+        // if (gamertag) user.gamertag = gamertag;
+        // if (console) user.console = console;
+        // if (profilePic) user.profilePic = profilePic;
+        // if (timePreferences) user.timePreferences = timePreferences;
+        // if (gamePreferences) user.gamePreferences = gamePreferences;
+        // if (bio) user.bio = bio;
+        // if (country) user.country = country;
 
-        // Save the updated user
-        await user.save();
+        // // Save the updated user
+        // await user.save();
 
-        return user;
+        // return user;
       } catch (error) {
         throw new Error('Failed to update user');
       }

@@ -4,7 +4,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import PlayerInfoCard from '../components/PlayerInfoCard';
 import FriendList from '../components/FriendList';
-import exampleUser from '../helpers/exampleUser'
+import exampleUser2 from '../helpers/exampleUser2'
 import API from '../helpers/API';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -12,12 +12,7 @@ import Auth from '../helpers/auth';
 
 import Button from "@mui/material/Button"
 
-let user = exampleUser;
-console.log(Auth.loggedIn());
-  if (Auth.loggedIn()) { 
-    user = Auth.getUser().data;
-  }
-
+const user = exampleUser2[0];
 
 export default function Profile() {
 

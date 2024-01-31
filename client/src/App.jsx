@@ -5,7 +5,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import ResponsiveAppBar from './components/Header';
 import FriendList from './components/FriendList';
 import Auth from './helpers/auth';
-import exampleUser from './helpers/exampleUser';
+import exampleUser2 from './helpers/exampleUser2';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from './utils/queries';
 
@@ -15,14 +15,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-let user = exampleUser;
-let userName = exampleUser.username;
+let user = exampleUser2[0];
+let userName = exampleUser2.username;
 
-console.log(Auth.loggedIn());
-if (Auth.loggedIn()) { 
-  userName = Auth.getUser().data.username;
-  user = Auth.getUser().data;
-}
+// console.log(Auth.loggedIn());
+// if (Auth.loggedIn()) { 
+//   userName = Auth.getUser().data.username;
+//   user = Auth.getUser().data;
+// }
 
 // let myId = [];
 // let userName = [];

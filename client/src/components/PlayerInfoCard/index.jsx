@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import exampleUser from '../../helpers/exampleUser';
+import exampleUser2 from '../../helpers/exampleUser2';
 // import Auth from '../../utils/auth';
 import ProfilePic from '../../components/ProfileForm/ProfilePic'
 import ProfileForm from '../ProfileForm'
